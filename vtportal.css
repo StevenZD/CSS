@@ -1,0 +1,577 @@
+/* ============================================================
+   ZENDATA CYBERSECURITY - Vtiger Customer Portal Theme
+   Version: 1.0
+   Last Updated: 2026-04-07
+   
+   HOW TO USE:
+   1. Host this file on a public URL (e.g., GitHub Pages, S3, your CDN)
+   2. In Vtiger: Settings > Configuration > Customer Portal
+   3. Paste the URL in "CSS URL for Custom Theme"
+   4. Save and test
+   
+   IMPORTANT: Open your portal in browser, right-click > Inspect
+   to fine-tune selectors if any don't match your Vtiger version.
+   ============================================================ */
+
+/* --- DESIGN TOKENS (ZENDATA) --- */
+:root {
+  --zen-base-primary: #0b1929;
+  --zen-base-secondary: #132f4c;
+  --zen-base-inner: #030712;
+  --zen-accent-primary: #2dd4bf;
+  --zen-accent-secondary: #0ea5e9;
+  --zen-text-primary: #ffffff;
+  --zen-text-secondary: #94a3b8;
+  --zen-text-muted: #64748b;
+  --zen-border: rgba(45, 212, 191, 0.3);
+  --zen-border-hover: rgba(45, 212, 191, 0.7);
+  --zen-red: #b91c1c;
+  --zen-font: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --zen-radius: 8px;
+}
+
+/* --- LOAD HANKEN GROTESK FONT --- */
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/* --- GLOBAL RESETS --- */
+body,
+html {
+  font-family: var(--zen-font) !important;
+  background-color: var(--zen-base-primary) !important;
+  color: var(--zen-text-primary) !important;
+}
+
+* {
+  font-family: var(--zen-font) !important;
+}
+
+/* --- PAGE BACKGROUND --- */
+body {
+  background: var(--zen-base-primary) !important;
+}
+
+.main-container,
+.container,
+.container-fluid,
+#page,
+.page-content,
+.content-area,
+main,
+.app-content,
+.portal-body,
+.portal-content {
+  background-color: var(--zen-base-primary) !important;
+}
+
+/* --- HEADER / NAVBAR --- */
+header,
+nav,
+.navbar,
+.navbar-inverse,
+.navbar-default,
+.portal-header,
+.header-bar,
+.app-header,
+.top-bar,
+nav.navbar {
+  background-color: var(--zen-base-primary) !important;
+  border-bottom: 1px solid var(--zen-border) !important;
+  box-shadow: none !important;
+}
+
+.navbar-brand,
+.navbar-brand img,
+.portal-logo {
+  /* Logo area - adjust height as needed */
+  max-height: 45px;
+}
+
+/* Navbar links */
+.navbar a,
+.navbar .nav-link,
+.navbar-nav > li > a,
+.nav-item a,
+header a {
+  color: var(--zen-text-primary) !important;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.navbar a:hover,
+.navbar .nav-link:hover,
+.navbar-nav > li > a:hover,
+header a:hover {
+  color: var(--zen-accent-primary) !important;
+}
+
+.navbar a.active,
+.navbar .nav-link.active,
+.navbar-nav > .active > a,
+.nav-item.active a {
+  background-color: var(--zen-accent-primary) !important;
+  color: #172554 !important;
+  border-radius: var(--zen-radius) !important;
+  font-weight: 700;
+}
+
+/* --- SIDEBAR --- */
+.sidebar,
+.portal-sidebar,
+.left-panel,
+.nav-sidebar,
+aside {
+  background-color: var(--zen-base-secondary) !important;
+  border-right: 1px solid var(--zen-border) !important;
+}
+
+.sidebar a,
+.portal-sidebar a,
+.nav-sidebar a {
+  color: var(--zen-text-primary) !important;
+}
+
+.sidebar a:hover,
+.portal-sidebar a:hover,
+.nav-sidebar a:hover {
+  color: var(--zen-accent-primary) !important;
+  background-color: rgba(45, 212, 191, 0.1) !important;
+}
+
+.sidebar .active a,
+.portal-sidebar .active a,
+.nav-sidebar .active a {
+  color: var(--zen-accent-primary) !important;
+  border-left: 3px solid var(--zen-accent-primary) !important;
+  background-color: rgba(45, 212, 191, 0.08) !important;
+}
+
+/* --- CARDS & PANELS --- */
+.card,
+.panel,
+.panel-default,
+.panel-body,
+.widget,
+.box,
+.tile,
+.module-container,
+.list-group,
+.well {
+  background-color: var(--zen-base-secondary) !important;
+  border: 1px solid var(--zen-border) !important;
+  border-radius: var(--zen-radius) !important;
+  color: var(--zen-text-primary) !important;
+  box-shadow: none !important;
+}
+
+.card:hover,
+.panel:hover {
+  border-color: var(--zen-border-hover) !important;
+}
+
+.panel-heading,
+.card-header {
+  background-color: var(--zen-base-secondary) !important;
+  border-bottom: 1px solid var(--zen-border) !important;
+  color: var(--zen-text-primary) !important;
+  font-weight: 700;
+}
+
+.panel-footer,
+.card-footer {
+  background-color: var(--zen-base-secondary) !important;
+  border-top: 1px solid var(--zen-border) !important;
+}
+
+/* --- TABLES (for Cases list) --- */
+table,
+.table,
+.listview-table {
+  background-color: transparent !important;
+  color: var(--zen-text-primary) !important;
+}
+
+.table > thead > tr > th,
+.table > thead > tr > td,
+table thead th,
+table thead td {
+  background-color: var(--zen-base-inner) !important;
+  color: var(--zen-text-secondary) !important;
+  border-bottom: 1px solid var(--zen-border) !important;
+  font-weight: 600;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table > tbody > tr > td,
+.table > tbody > tr > th,
+table tbody td,
+table tbody th {
+  background-color: var(--zen-base-secondary) !important;
+  color: var(--zen-text-primary) !important;
+  border-bottom: 1px solid var(--zen-border) !important;
+}
+
+.table > tbody > tr:hover > td,
+table tbody tr:hover td {
+  background-color: rgba(45, 212, 191, 0.05) !important;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > td {
+  background-color: var(--zen-base-inner) !important;
+}
+
+/* --- BUTTONS --- */
+.btn-primary,
+.btn-success,
+.button-primary,
+button[type="submit"],
+input[type="submit"],
+.btn-main {
+  background-color: var(--zen-accent-primary) !important;
+  color: #172554 !important;
+  border: none !important;
+  border-radius: var(--zen-radius) !important;
+  font-weight: 600 !important;
+  padding: 8px 20px !important;
+  transition: all 0.2s ease !important;
+}
+
+.btn-primary:hover,
+.btn-success:hover,
+.button-primary:hover,
+button[type="submit"]:hover,
+input[type="submit"]:hover {
+  background-color: #14b8a6 !important;
+  color: #172554 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(45, 212, 191, 0.3) !important;
+}
+
+.btn-default,
+.btn-secondary,
+.button-secondary {
+  background-color: var(--zen-base-secondary) !important;
+  color: var(--zen-text-primary) !important;
+  border: 1px solid var(--zen-border) !important;
+  border-radius: var(--zen-radius) !important;
+  font-weight: 500 !important;
+}
+
+.btn-default:hover,
+.btn-secondary:hover {
+  border-color: var(--zen-accent-primary) !important;
+  color: var(--zen-accent-primary) !important;
+}
+
+.btn-danger {
+  background-color: var(--zen-red) !important;
+  color: var(--zen-text-primary) !important;
+  border: none !important;
+  border-radius: var(--zen-radius) !important;
+}
+
+.btn-link,
+a.btn-link {
+  color: var(--zen-accent-primary) !important;
+}
+
+.btn-link:hover {
+  color: #14b8a6 !important;
+}
+
+/* --- FORMS (Case creation form) --- */
+.form-control,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
+input[type="search"],
+select,
+textarea {
+  background-color: var(--zen-base-inner) !important;
+  color: var(--zen-text-primary) !important;
+  border: 1px solid var(--zen-border) !important;
+  border-radius: var(--zen-radius) !important;
+  padding: 10px 14px !important;
+  transition: border-color 0.2s ease !important;
+}
+
+.form-control:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--zen-accent-primary) !important;
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.15) !important;
+  outline: none !important;
+}
+
+.form-control::placeholder,
+input::placeholder,
+textarea::placeholder {
+  color: var(--zen-text-muted) !important;
+}
+
+label,
+.control-label,
+.form-label {
+  color: var(--zen-text-primary) !important;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+/* --- LINKS --- */
+a {
+  color: var(--zen-accent-primary) !important;
+  text-decoration: none !important;
+}
+
+a:hover {
+  color: #14b8a6 !important;
+  text-decoration: none !important;
+}
+
+/* --- CASE STATUS BADGES --- */
+.badge,
+.label,
+.tag,
+.status-badge,
+span.badge {
+  border-radius: 20px !important;
+  padding: 4px 12px !important;
+  font-weight: 600 !important;
+  font-size: 0.8em !important;
+}
+
+/* Customize based on your case status values */
+.badge-success,
+.label-success {
+  background-color: rgba(45, 212, 191, 0.15) !important;
+  color: var(--zen-accent-primary) !important;
+  border: 1px solid var(--zen-accent-primary) !important;
+}
+
+.badge-warning,
+.label-warning {
+  background-color: rgba(251, 191, 36, 0.15) !important;
+  color: #fbbf24 !important;
+  border: 1px solid #fbbf24 !important;
+}
+
+.badge-danger,
+.label-danger {
+  background-color: rgba(239, 68, 68, 0.15) !important;
+  color: #ef4444 !important;
+  border: 1px solid #ef4444 !important;
+}
+
+.badge-info,
+.label-info {
+  background-color: rgba(14, 165, 233, 0.15) !important;
+  color: var(--zen-accent-secondary) !important;
+  border: 1px solid var(--zen-accent-secondary) !important;
+}
+
+.badge-default,
+.label-default {
+  background-color: rgba(148, 163, 184, 0.15) !important;
+  color: var(--zen-text-secondary) !important;
+  border: 1px solid var(--zen-text-secondary) !important;
+}
+
+/* --- PAGINATION --- */
+.pagination > li > a,
+.pagination > li > span {
+  background-color: var(--zen-base-secondary) !important;
+  color: var(--zen-text-primary) !important;
+  border: 1px solid var(--zen-border) !important;
+}
+
+.pagination > .active > a,
+.pagination > .active > span {
+  background-color: var(--zen-accent-primary) !important;
+  color: #172554 !important;
+  border-color: var(--zen-accent-primary) !important;
+}
+
+.pagination > li > a:hover {
+  background-color: rgba(45, 212, 191, 0.1) !important;
+  color: var(--zen-accent-primary) !important;
+}
+
+/* --- DROPDOWN MENUS --- */
+.dropdown-menu {
+  background-color: var(--zen-base-secondary) !important;
+  border: 1px solid var(--zen-border) !important;
+  border-radius: var(--zen-radius) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3) !important;
+}
+
+.dropdown-menu > li > a,
+.dropdown-item {
+  color: var(--zen-text-primary) !important;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-item:hover {
+  background-color: rgba(45, 212, 191, 0.1) !important;
+  color: var(--zen-accent-primary) !important;
+}
+
+/* --- MODALS --- */
+.modal-content {
+  background-color: var(--zen-base-secondary) !important;
+  border: 1px solid var(--zen-border) !important;
+  border-radius: var(--zen-radius) !important;
+  color: var(--zen-text-primary) !important;
+}
+
+.modal-header {
+  border-bottom: 1px solid var(--zen-border) !important;
+  background-color: var(--zen-base-primary) !important;
+}
+
+.modal-header .close,
+.modal-header button {
+  color: var(--zen-text-primary) !important;
+}
+
+.modal-footer {
+  border-top: 1px solid var(--zen-border) !important;
+  background-color: var(--zen-base-primary) !important;
+}
+
+.modal-title {
+  color: var(--zen-text-primary) !important;
+  font-weight: 700;
+}
+
+/* --- LOGIN PAGE --- */
+.login-container,
+.login-page,
+.login-box,
+.auth-container {
+  background-color: var(--zen-base-primary) !important;
+}
+
+.login-form,
+.login-panel,
+.auth-box {
+  background-color: var(--zen-base-secondary) !important;
+  border: 1px solid var(--zen-border) !important;
+  border-radius: var(--zen-radius) !important;
+}
+
+/* --- FOOTER --- */
+footer,
+.portal-footer,
+.app-footer {
+  background-color: var(--zen-base-primary) !important;
+  border-top: 1px solid var(--zen-border) !important;
+  color: var(--zen-text-secondary) !important;
+}
+
+/* --- SCROLLBARS (Webkit) --- */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--zen-base-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--zen-text-muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--zen-accent-primary);
+}
+
+/* --- ALERTS & NOTIFICATIONS --- */
+.alert {
+  border-radius: var(--zen-radius) !important;
+  border: 1px solid !important;
+}
+
+.alert-info {
+  background-color: rgba(14, 165, 233, 0.1) !important;
+  border-color: var(--zen-accent-secondary) !important;
+  color: var(--zen-accent-secondary) !important;
+}
+
+.alert-success {
+  background-color: rgba(45, 212, 191, 0.1) !important;
+  border-color: var(--zen-accent-primary) !important;
+  color: var(--zen-accent-primary) !important;
+}
+
+.alert-warning {
+  background-color: rgba(251, 191, 36, 0.1) !important;
+  border-color: #fbbf24 !important;
+  color: #fbbf24 !important;
+}
+
+.alert-danger {
+  background-color: rgba(239, 68, 68, 0.1) !important;
+  border-color: #ef4444 !important;
+  color: #ef4444 !important;
+}
+
+/* --- BREADCRUMBS --- */
+.breadcrumb {
+  background-color: transparent !important;
+  color: var(--zen-text-secondary) !important;
+}
+
+.breadcrumb a {
+  color: var(--zen-accent-primary) !important;
+}
+
+.breadcrumb > .active {
+  color: var(--zen-text-primary) !important;
+}
+
+/* --- SEARCH BAR --- */
+.search-bar,
+.search-input,
+input[type="search"] {
+  background-color: var(--zen-base-inner) !important;
+  color: var(--zen-text-primary) !important;
+  border: 1px solid var(--zen-border) !important;
+}
+
+/* --- TOOLTIPS --- */
+.tooltip-inner {
+  background-color: var(--zen-base-inner) !important;
+  color: var(--zen-text-primary) !important;
+  border: 1px solid var(--zen-border) !important;
+  border-radius: var(--zen-radius) !important;
+}
+
+/* --- MISC OVERRIDES --- */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--zen-text-primary) !important;
+}
+
+p {
+  color: var(--zen-text-primary) !important;
+}
+
+hr {
+  border-color: var(--zen-border) !important;
+}
+
+/* Hide Vtiger branding if desired */
+/* Uncomment the line below to hide "Powered by Vtiger" */
+/* .powered-by, .vtiger-branding, footer .vtiger-logo { display: none !important; } */
+
+/* --- SELECTION COLOR --- */
+::selection {
+  background-color: var(--zen-accent-primary);
+  color: #172554;
+}
