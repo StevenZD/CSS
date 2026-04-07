@@ -1124,3 +1124,465 @@ a,
   padding-left: 0px;
   color: var(--zen-text) !important;
 }
+/* ============================================================
+   ZENDATA VTIGER PORTAL - BUG FIXES PATCH
+   Append this to the bottom of vtportal.css
+   ============================================================ */
+
+
+/* --- FIX 1: Highcharts pie chart white background --- */
+.highcharts-background {
+  fill: var(--zen-base-secondary) !important;
+}
+
+.highcharts-container {
+  background-color: var(--zen-base-secondary) !important;
+}
+
+/* Highcharts legend text */
+.highcharts-legend-item span {
+  color: var(--zen-text) !important;
+  fill: var(--zen-text) !important;
+}
+
+/* Highcharts tooltip */
+.highcharts-tooltip text {
+  fill: var(--zen-text) !important;
+}
+
+.highcharts-label-box.highcharts-tooltip-box {
+  fill: var(--zen-base-inner) !important;
+  stroke: var(--zen-accent) !important;
+}
+
+
+/* --- FIX 2: Buttons - remove light blue, use ZENDATA teal --- */
+.btn-primary,
+.btn-group-justified .btn-primary,
+.btn-group .btn-primary {
+  background-color: var(--zen-accent) !important;
+  border-color: var(--zen-accent) !important;
+  color: #0b1929 !important;
+  font-weight: 600 !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: var(--zen-accent-hover) !important;
+  border-color: var(--zen-accent-hover) !important;
+  color: #0b1929 !important;
+}
+
+/* Mine/All toggle buttons */
+.btn-group-justified .btn-default {
+  background-color: var(--zen-base-secondary) !important;
+  border: 1px solid var(--zen-border) !important;
+  color: var(--zen-text) !important;
+}
+
+.btn-group-justified .btn-default:hover {
+  background-color: rgba(45, 212, 191, 0.1) !important;
+  border-color: var(--zen-accent) !important;
+}
+
+/* Active toggle (Mine/All when selected) */
+.btn-group-justified .btn-default.btn-primary,
+.btn-group-justified .btn.btn-default.btn-primary {
+  background-color: var(--zen-accent) !important;
+  border-color: var(--zen-accent) !important;
+  color: #0b1929 !important;
+}
+
+
+/* --- FIX 3: Table row hover - remove white/light blue highlight --- */
+.listViewEntries:hover td,
+.listViewEntries:hover {
+  background-color: rgba(45, 212, 191, 0.08) !important;
+  color: var(--zen-text) !important;
+}
+
+.listViewEntries td {
+  background-color: var(--zen-base-secondary) !important;
+  color: var(--zen-text) !important;
+  border-bottom: 1px solid var(--zen-border) !important;
+}
+
+/* Table header row */
+.listViewHeaders th,
+tr.listViewHeaders th {
+  background-color: var(--zen-base-inner) !important;
+  color: var(--zen-accent) !important;
+  border-bottom: 2px solid var(--zen-border) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  font-size: 0.8em !important;
+  letter-spacing: 0.5px !important;
+}
+
+.listViewHeaderValues {
+  color: var(--zen-accent) !important;
+  text-decoration: none !important;
+}
+
+/* Search row in table */
+.searchRow td {
+  background-color: var(--zen-base-inner) !important;
+  border-bottom: 1px solid var(--zen-border) !important;
+}
+
+.searchRow .searchElement input,
+.searchRow .searchElement .form-control {
+  background-color: var(--zen-base-secondary) !important;
+  color: var(--zen-text) !important;
+  border: 1px solid var(--zen-border) !important;
+}
+
+/* First cell (checkbox column) */
+.listTableFirstCell {
+  background-color: var(--zen-base-secondary) !important;
+}
+
+.searchRow .listTableFirstCell {
+  background-color: var(--zen-base-inner) !important;
+}
+
+/* Panel transparent for table container */
+.panel-transparent,
+.panel-table-body {
+  background-color: transparent !important;
+}
+
+
+/* --- FIX 4: Select2 dropdowns (readable dark theme) --- */
+.select2-container--default .select2-selection--multiple {
+  background-color: var(--zen-base-secondary) !important;
+  border: 1px solid var(--zen-border) !important;
+  color: var(--zen-text) !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__rendered {
+  color: var(--zen-text) !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: var(--zen-accent) !important;
+  color: #0b1929 !important;
+  border: none !important;
+}
+
+.select2-container--default .select2-search--inline .select2-search__field {
+  color: var(--zen-text) !important;
+}
+
+.select2-container--default .select2-search--inline .select2-search__field::placeholder {
+  color: var(--zen-text-muted) !important;
+}
+
+.select2-dropdown {
+  background-color: var(--zen-base-secondary) !important;
+  border: 1px solid var(--zen-border) !important;
+}
+
+.select2-container--default .select2-results__option {
+  color: var(--zen-text) !important;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color: var(--zen-accent) !important;
+  color: #0b1929 !important;
+}
+
+.select2-container--default .select2-results__option[aria-selected="true"] {
+  background-color: rgba(45, 212, 191, 0.15) !important;
+  color: var(--zen-accent) !important;
+}
+
+.select2-search--dropdown .select2-search__field {
+  background-color: var(--zen-base-inner) !important;
+  color: var(--zen-text) !important;
+  border: 1px solid var(--zen-border) !important;
+}
+
+/* Selectric dropdown (status filter) */
+.selectric {
+  background-color: var(--zen-base-secondary) !important;
+  border: 1px solid var(--zen-border) !important;
+  border-radius: var(--zen-radius) !important;
+}
+
+.selectric .label {
+  color: var(--zen-text) !important;
+  font-weight: 500 !important;
+  margin: 0 !important;
+  padding: 6px 10px !important;
+}
+
+.selectric .button {
+  color: var(--zen-text) !important;
+  background-color: transparent !important;
+}
+
+.selectricItems {
+  background-color: var(--zen-base-secondary) !important;
+  border: 1px solid var(--zen-border) !important;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4) !important;
+}
+
+.selectricItems ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.selectricItems li {
+  color: var(--zen-text) !important;
+  padding: 8px 12px !important;
+}
+
+.selectricItems li:hover,
+.selectricItems li.selected {
+  background-color: var(--zen-accent) !important;
+  color: #0b1929 !important;
+}
+
+
+/* --- FIX 5: Download/action button in table --- */
+.listViewActionsColumn {
+  background-color: var(--zen-base-secondary) !important;
+}
+
+.listRowActions .fa-download,
+.actionIcon {
+  color: var(--zen-accent) !important;
+  cursor: pointer;
+  font-size: 1.1em;
+}
+
+.actionIcon:hover {
+  color: var(--zen-accent-hover) !important;
+}
+
+
+/* --- FIX 6: Text overflow in detail view fields --- */
+.value.detail-break {
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  white-space: pre-wrap !important;
+  max-width: 100% !important;
+  display: block !important;
+}
+
+.detailRow .value {
+  background: var(--zen-base-inner) !important;
+  border: 1px solid var(--zen-border) !important;
+  padding: 8px 12px !important;
+  border-radius: var(--zen-radius) !important;
+  color: var(--zen-text) !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  max-width: 100% !important;
+  float: none !important;
+  display: block !important;
+}
+
+/* Detail view split content */
+.rightEditContent {
+  background: var(--zen-base-primary) !important;
+  border-left: 1px solid var(--zen-border) !important;
+}
+
+.leftEditContent {
+  background: var(--zen-base-primary) !important;
+}
+
+/* Tab navigation in detail view */
+.nav-tabs > li > a {
+  color: var(--zen-text-dim) !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  color: var(--zen-accent) !important;
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 3px solid var(--zen-accent) !important;
+}
+
+.tab-content {
+  background-color: var(--zen-base-primary) !important;
+  color: var(--zen-text) !important;
+  padding: 15px 0 !important;
+}
+
+
+/* --- FIX 7: Search box icon and readability --- */
+.search-box,
+input.search-box,
+#search-box {
+  background-color: var(--zen-base-inner) !important;
+  color: var(--zen-text) !important;
+  border: 1px solid var(--zen-border) !important;
+  border-radius: var(--zen-radius) !important;
+  padding: 6px 10px !important;
+}
+
+.search-box::placeholder,
+#search-box::placeholder {
+  color: var(--zen-text-muted) !important;
+}
+
+.search-box:focus,
+#search-box:focus {
+  border-color: var(--zen-accent) !important;
+  box-shadow: 0 0 0 2px rgba(45, 212, 191, 0.15) !important;
+  outline: none !important;
+}
+
+.search-icon,
+.glyphicon-search {
+  color: var(--zen-accent) !important;
+}
+
+.search-results-container {
+  position: relative;
+}
+
+.search-results-container label {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Search wrapper positioning */
+.search-wrapper {
+  display: inline-block;
+}
+
+
+/* --- EXTRA: Module title and navigation --- */
+.module-title,
+.panel-title.module-title {
+  color: var(--zen-text) !important;
+  font-size: 1.5em !important;
+  font-weight: 700 !important;
+  padding: 10px 0 !important;
+}
+
+.portal-welcome {
+  color: var(--zen-text) !important;
+}
+
+/* Portal controls row */
+.portal-controls-row {
+  padding: 10px 0 !important;
+  margin-bottom: 10px !important;
+}
+
+/* Ticket panel (Recent Cases on home) */
+.tickets-panel-container .panel-heading,
+.tickets-panel-container .panel-title {
+  color: var(--zen-text) !important;
+  font-weight: 700 !important;
+}
+
+.tickets-panel-content {
+  background-color: var(--zen-base-secondary) !important;
+  border: 1px solid var(--zen-border) !important;
+  border-radius: var(--zen-radius) !important;
+  margin-bottom: 12px !important;
+}
+
+.tickets-panel-heading {
+  padding: 12px 15px !important;
+}
+
+.tickets-panel-body {
+  background-color: var(--zen-base-secondary) !important;
+  color: var(--zen-text) !important;
+  border-top: 1px solid var(--zen-border) !important;
+}
+
+.ticket-panel-title a {
+  color: var(--zen-accent) !important;
+  font-weight: 500 !important;
+}
+
+/* Shortcut panel */
+.shortcut-container .panel {
+  background-color: var(--zen-base-secondary) !important;
+  border: 1px solid var(--zen-border) !important;
+}
+
+.shortcut-button .btn {
+  width: 100% !important;
+  margin-bottom: 8px !important;
+  text-align: left !important;
+}
+
+/* Separator styling */
+.separator {
+  border-bottom: 1px solid var(--zen-border) !important;
+  padding-bottom: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+/* Detail view header */
+.ticket-detail-header-row {
+  padding: 15px 0 !important;
+  border-bottom: 1px solid var(--zen-border) !important;
+  margin-bottom: 15px !important;
+}
+
+.ticket-detail-header-row .fsmall {
+  color: var(--zen-text) !important;
+}
+
+.ticket-detail-header-row a {
+  color: var(--zen-accent) !important;
+}
+
+/* ngProgress bar - already teal from Vtiger config */
+#ngProgress {
+  background-color: var(--zen-accent) !important;
+  color: var(--zen-accent) !important;
+}
+
+/* Comment section */
+.comment-list {
+  color: var(--zen-text) !important;
+}
+
+.alert-warning {
+  background-color: rgba(251, 191, 36, 0.08) !important;
+  border-color: rgba(251, 191, 36, 0.3) !important;
+  color: var(--zen-yellow) !important;
+}
+
+/* Datatable specific overrides */
+.dataTable.no-footer {
+  border-bottom: 1px solid var(--zen-border) !important;
+}
+
+.dataTables_wrapper {
+  background-color: transparent !important;
+}
+
+/* Column resizer grips */
+.JCLRgrip .grip {
+  background-color: var(--zen-border) !important;
+}
+
+/* Text ellipsis columns */
+.textOverflowEllipsis {
+  color: var(--zen-text) !important;
+}
+
+.defTableColumn {
+  max-width: 200px !important;
+}
