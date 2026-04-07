@@ -1,286 +1,548 @@
 /* ============================================================
    ZENDATA CYBERSECURITY - Vtiger Customer Portal Theme
-   Version: 1.0
-   Last Updated: 2026-04-07
-   
-   HOW TO USE:
-   1. Host this file on a public URL (e.g., GitHub Pages, S3, your CDN)
-   2. In Vtiger: Settings > Configuration > Customer Portal
-   3. Paste the URL in "CSS URL for Custom Theme"
-   4. Save and test
-   
-   IMPORTANT: Open your portal in browser, right-click > Inspect
-   to fine-tune selectors if any don't match your Vtiger version.
+   Version: 2.0
    ============================================================ */
 
-/* --- DESIGN TOKENS (ZENDATA) --- */
+/* --- DESIGN TOKENS --- */
 :root {
   --zen-base-primary: #0b1929;
   --zen-base-secondary: #132f4c;
   --zen-base-inner: #030712;
-  --zen-accent-primary: #2dd4bf;
-  --zen-accent-secondary: #0ea5e9;
-  --zen-text-primary: #ffffff;
-  --zen-text-secondary: #94a3b8;
+  --zen-accent: #2dd4bf;
+  --zen-accent-hover: #14b8a6;
+  --zen-accent-soft: rgba(45, 212, 191, 0.1);
+  --zen-accent2: #0ea5e9;
+  --zen-text: #ffffff;
+  --zen-text-dim: #94a3b8;
   --zen-text-muted: #64748b;
   --zen-border: rgba(45, 212, 191, 0.3);
   --zen-border-hover: rgba(45, 212, 191, 0.7);
   --zen-red: #b91c1c;
+  --zen-yellow: #fbbf24;
   --zen-font: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --zen-radius: 8px;
+  --zen-radius: 6px;
 }
 
-/* --- LOAD HANKEN GROTESK FONT --- */
 @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap');
 
-/* --- GLOBAL RESETS --- */
-body,
-html {
+
+/* ==========================================================
+   1. GLOBAL
+   ========================================================== */
+
+body, html {
   font-family: var(--zen-font) !important;
   background-color: var(--zen-base-primary) !important;
-  color: var(--zen-text-primary) !important;
+  color: var(--zen-text) !important;
 }
 
-* {
+*, *::before, *::after {
   font-family: var(--zen-font) !important;
 }
 
-/* --- PAGE BACKGROUND --- */
-body {
-  background: var(--zen-base-primary) !important;
+a {
+  color: var(--zen-accent) !important;
+  transition: color 0.2s ease;
 }
 
-.main-container,
-.container,
-.container-fluid,
-#page,
-.page-content,
-.content-area,
-main,
-.app-content,
-.portal-body,
-.portal-content {
+a:hover, a:focus {
+  color: var(--zen-accent-hover) !important;
+  text-decoration: none !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.page-header,
+p, span, div, li, td, th, label {
+  color: var(--zen-text) !important;
+}
+
+hr, .hrHeader {
+  border-color: var(--zen-border) !important;
+}
+
+::selection {
+  background-color: var(--zen-accent);
+  color: #172554;
+}
+
+
+/* ==========================================================
+   2. PAGE STRUCTURE
+   ========================================================== */
+
+.webapp-page {
   background-color: var(--zen-base-primary) !important;
 }
 
-/* --- HEADER / NAVBAR --- */
-header,
-nav,
-.navbar,
-.navbar-inverse,
-.navbar-default,
-.portal-header,
-.header-bar,
-.app-header,
-.top-bar,
-nav.navbar {
+.main-container {
+  background-color: var(--zen-base-primary) !important;
+}
+
+.page-header {
+  border: 0 !important;
+  color: var(--zen-text) !important;
+}
+
+
+/* ==========================================================
+   3. NAVBAR / HEADER
+   ========================================================== */
+
+.navbar {
   background-color: var(--zen-base-primary) !important;
   border-bottom: 1px solid var(--zen-border) !important;
   box-shadow: none !important;
 }
 
-.navbar-brand,
-.navbar-brand img,
-.portal-logo {
-  /* Logo area - adjust height as needed */
-  max-height: 45px;
+.navbar-inverse {
+  background-color: var(--zen-base-primary) !important;
+  border-color: var(--zen-border) !important;
 }
 
-/* Navbar links */
-.navbar a,
-.navbar .nav-link,
-.navbar-nav > li > a,
-.nav-item a,
-header a {
-  color: var(--zen-text-primary) !important;
+.navbar-default {
+  background-color: var(--zen-base-primary) !important;
+  border-color: var(--zen-border) !important;
+}
+
+.navbar-nav > li > a {
+  color: var(--zen-text) !important;
   font-weight: 500;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, background 0.2s ease;
 }
 
-.navbar a:hover,
-.navbar .nav-link:hover,
 .navbar-nav > li > a:hover,
-header a:hover {
-  color: var(--zen-accent-primary) !important;
+.nav > li > a:hover {
+  background: var(--zen-accent-soft) !important;
+  color: var(--zen-accent) !important;
 }
 
-.navbar a.active,
-.navbar .nav-link.active,
 .navbar-nav > .active > a,
-.nav-item.active a {
-  background-color: var(--zen-accent-primary) !important;
+.navbar-nav > .active > a:hover,
+.navbar-nav > .active > a:focus {
+  background-color: var(--zen-accent) !important;
   color: #172554 !important;
   border-radius: var(--zen-radius) !important;
   font-weight: 700;
 }
 
-/* --- SIDEBAR --- */
-.sidebar,
-.portal-sidebar,
-.left-panel,
-.nav-sidebar,
-aside {
+.navbar-brand {
+  color: var(--zen-text) !important;
+}
+
+.navbar-toggle {
+  border-color: var(--zen-border) !important;
+}
+
+.navbar-toggle .icon-bar {
+  background-color: var(--zen-text) !important;
+}
+
+.navbar-collapse {
+  background-color: var(--zen-base-primary) !important;
+  border-color: var(--zen-border) !important;
+}
+
+/* Logo */
+.company-logo {
+  height: 80px;
+  padding: 10px;
+}
+
+.logo-left {
+  height: 50px;
+}
+
+.logo-left img {
+  margin: 10px 20px;
+  height: 30px;
+}
+
+/* Nav links */
+.faqs-link {
+  color: var(--zen-text) !important;
+}
+
+.faqs-link:hover {
+  color: var(--zen-accent) !important;
+}
+
+.logout-links {
+  color: var(--zen-text) !important;
+}
+
+.logout-links:hover {
+  color: var(--zen-accent) !important;
+}
+
+.menu {
+  width: 100%;
+  margin-left: 0px;
+}
+
+.nav-tabs {
+  border-bottom: 1px solid var(--zen-border) !important;
+}
+
+.nav-tabs > li > a {
+  color: var(--zen-text-dim) !important;
+  border: none !important;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
   background-color: var(--zen-base-secondary) !important;
+  color: var(--zen-accent) !important;
+  border: 1px solid var(--zen-border) !important;
+  border-bottom-color: transparent !important;
+}
+
+
+/* ==========================================================
+   4. LEFT PANEL / SIDEBAR
+   ========================================================== */
+
+.left-panel {
+  min-height: 590px;
+  background: var(--zen-base-secondary) !important;
   border-right: 1px solid var(--zen-border) !important;
 }
 
-.sidebar a,
-.portal-sidebar a,
-.nav-sidebar a {
-  color: var(--zen-text-primary) !important;
-}
 
-.sidebar a:hover,
-.portal-sidebar a:hover,
-.nav-sidebar a:hover {
-  color: var(--zen-accent-primary) !important;
-  background-color: rgba(45, 212, 191, 0.1) !important;
-}
+/* ==========================================================
+   5. LOGIN FORM
+   ========================================================== */
 
-.sidebar .active a,
-.portal-sidebar .active a,
-.nav-sidebar .active a {
-  color: var(--zen-accent-primary) !important;
-  border-left: 3px solid var(--zen-accent-primary) !important;
-  background-color: rgba(45, 212, 191, 0.08) !important;
-}
-
-/* --- CARDS & PANELS --- */
-.card,
-.panel,
-.panel-default,
-.panel-body,
-.widget,
-.box,
-.tile,
-.module-container,
-.list-group,
-.well {
-  background-color: var(--zen-base-secondary) !important;
+.login-form {
+  background: var(--zen-base-secondary) !important;
   border: 1px solid var(--zen-border) !important;
   border-radius: var(--zen-radius) !important;
-  color: var(--zen-text-primary) !important;
-  box-shadow: none !important;
+  padding: 25px 30px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
 }
 
-.card:hover,
-.panel:hover {
-  border-color: var(--zen-border-hover) !important;
+.login-form label {
+  color: var(--zen-text) !important;
+  font-weight: 600;
 }
 
-.panel-heading,
-.card-header {
-  background-color: var(--zen-base-secondary) !important;
+.login-form .form-control {
+  background-color: var(--zen-base-inner) !important;
+  color: var(--zen-text) !important;
+  border: 1px solid var(--zen-border) !important;
+}
+
+
+/* ==========================================================
+   6. TABLES & LIST VIEWS (Cases list)
+   ========================================================== */
+
+.cp-table-container {
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.cp-table-container table {
+  margin-bottom: 0;
   border-bottom: 1px solid var(--zen-border) !important;
-  color: var(--zen-text-primary) !important;
-  font-weight: 700;
 }
 
-.panel-footer,
-.card-footer {
-  background-color: var(--zen-base-secondary) !important;
-  border-top: 1px solid var(--zen-border) !important;
+.table-header {
+  margin-top: 20px;
+  background: var(--zen-base-inner) !important;
+  border: 1px solid var(--zen-border) !important;
+  padding: 0 20px;
+  color: var(--zen-text) !important;
 }
 
-/* --- TABLES (for Cases list) --- */
-table,
-.table,
-.listview-table {
-  background-color: transparent !important;
-  color: var(--zen-text-primary) !important;
+table, .table {
+  color: var(--zen-text) !important;
 }
 
 .table > thead > tr > th,
-.table > thead > tr > td,
-table thead th,
-table thead td {
+.bordered-table th {
   background-color: var(--zen-base-inner) !important;
-  color: var(--zen-text-secondary) !important;
-  border-bottom: 1px solid var(--zen-border) !important;
+  color: var(--zen-text-dim) !important;
+  border: 1px solid var(--zen-border) !important;
   font-weight: 600;
   font-size: 0.85em;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
 }
 
 .table > tbody > tr > td,
 .table > tbody > tr > th,
-table tbody td,
-table tbody th {
+.bordered-table td {
   background-color: var(--zen-base-secondary) !important;
-  color: var(--zen-text-primary) !important;
-  border-bottom: 1px solid var(--zen-border) !important;
+  color: var(--zen-text) !important;
+  border: 1px solid var(--zen-border) !important;
 }
 
-.table > tbody > tr:hover > td,
-table tbody tr:hover td {
-  background-color: rgba(45, 212, 191, 0.05) !important;
+.listViewEntries {
+  cursor: pointer;
+  height: 48px;
+  transition: background 0.15s ease;
+}
+
+.listViewEntries:hover td {
+  background-color: var(--zen-accent-soft) !important;
 }
 
 .table-striped > tbody > tr:nth-of-type(odd) > td {
   background-color: var(--zen-base-inner) !important;
 }
 
-/* --- BUTTONS --- */
-.btn-primary,
-.btn-success,
-.button-primary,
-button[type="submit"],
-input[type="submit"],
-.btn-main {
-  background-color: var(--zen-accent-primary) !important;
-  color: #172554 !important;
-  border: none !important;
-  border-radius: var(--zen-radius) !important;
-  font-weight: 600 !important;
-  padding: 8px 20px !important;
-  transition: all 0.2s ease !important;
+.table-responsive {
+  overflow-x: auto;
+  border: 1px solid var(--zen-border) !important;
+  border-radius: var(--zen-radius);
 }
 
-.btn-primary:hover,
-.btn-success:hover,
-.button-primary:hover,
-button[type="submit"]:hover,
-input[type="submit"]:hover {
-  background-color: #14b8a6 !important;
-  color: #172554 !important;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(45, 212, 191, 0.3) !important;
+.bordered-table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.btn-default,
-.btn-secondary,
-.button-secondary {
+
+/* ==========================================================
+   7. DETAIL VIEW (Case details)
+   ========================================================== */
+
+.detailRow {
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(45, 212, 191, 0.1);
+}
+
+.detailRow:hover {
+  background: var(--zen-accent-soft) !important;
+}
+
+.detailRow .fieldLabel {
+  padding-top: 10px;
+  font-size: 13px;
+  color: var(--zen-text-dim) !important;
+  font-weight: 600;
+}
+
+.detailRow .value {
+  float: left;
+  background: var(--zen-base-inner) !important;
+  border: 1px solid var(--zen-border) !important;
+  padding: 6px 10px;
+  color: var(--zen-text) !important;
+  border-radius: var(--zen-radius);
+}
+
+.detailRow .label {
+  padding: 10px;
+  float: left;
+  color: var(--zen-text-dim) !important;
+}
+
+.detailRow p.value {
+  margin-bottom: 0;
+  color: var(--zen-text) !important;
+}
+
+.editContainer {
+  border-bottom: 1px solid var(--zen-border) !important;
+}
+
+.leftEditContent {
+  min-height: 450px;
+  padding-top: 20px;
+  border-right: 1px solid var(--zen-border) !important;
+  background-color: var(--zen-base-primary) !important;
+}
+
+.leftEditContent.nosplit {
+  border-right: none !important;
+}
+
+.rightEditContent {
+  min-height: 450px;
+  background: var(--zen-base-secondary) !important;
+  padding-top: 20px;
+  border-left: 1px solid var(--zen-border) !important;
+}
+
+
+/* ==========================================================
+   8. COMMENTS / UPDATES (Case activity)
+   ========================================================== */
+
+.commentsContainer {
+  background: transparent !important;
+}
+
+.usertitle {
+  font-family: var(--zen-font) !important;
+  margin-bottom: 2px;
+}
+
+.usertitle .uname {
+  color: var(--zen-text) !important;
+  font-weight: 600;
+}
+
+.usertitle .utime {
+  color: var(--zen-text-muted) !important;
+}
+
+.support-msg {
+  margin-top: 7px;
+  padding: 10px;
+  padding-bottom: 0;
+  background: var(--zen-base-secondary) !important;
+  border-radius: var(--zen-radius) 0 0 var(--zen-radius) !important;
+  border: 1px solid var(--zen-border) !important;
+  color: var(--zen-text) !important;
+}
+
+.commentHighlighted {
+  background-color: rgba(45, 212, 191, 0.08) !important;
+}
+
+.cmtimg {
+  border: 1px solid var(--zen-border) !important;
+}
+
+.update-bullet {
+  background: var(--zen-accent) !important;
+}
+
+.update-row {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--zen-border) !important;
+}
+
+.update-row .label {
+  color: var(--zen-text) !important;
+}
+
+
+/* ==========================================================
+   9. SECTIONS & BLOCKS
+   ========================================================== */
+
+.cp-section {
+  padding: 20px;
+  color: var(--zen-text) !important;
+  text-shadow: none !important;
+}
+
+.cp-block {
+  margin-top: 15px;
+  padding: 12px;
+  border: 1px solid var(--zen-border) !important;
+  background: var(--zen-base-secondary) !important;
+  box-shadow: none !important;
+  border-radius: var(--zen-radius);
+}
+
+.cp-callout {
+  margin: 20px 0;
+  padding: 20px;
+  border-left: 3px solid var(--zen-accent) !important;
   background-color: var(--zen-base-secondary) !important;
-  color: var(--zen-text-primary) !important;
+  border-radius: 0 var(--zen-radius) var(--zen-radius) 0;
+}
+
+.cp-callout-info {
+  background-color: rgba(14, 165, 233, 0.08) !important;
+  border-color: var(--zen-accent2) !important;
+}
+
+.cp-callout-warning {
+  background-color: rgba(251, 191, 36, 0.08) !important;
+  border-color: var(--zen-yellow) !important;
+}
+
+.cp-callout-danger {
+  background-color: rgba(185, 28, 28, 0.08) !important;
+  border-color: var(--zen-red) !important;
+}
+
+.dashbtn {
+  padding: 20px;
+  min-width: 238px;
+  background-color: var(--zen-base-secondary) !important;
   border: 1px solid var(--zen-border) !important;
   border-radius: var(--zen-radius) !important;
-  font-weight: 500 !important;
+  color: var(--zen-text) !important;
+  transition: border-color 0.2s ease;
 }
 
-.btn-default:hover,
-.btn-secondary:hover {
-  border-color: var(--zen-accent-primary) !important;
-  color: var(--zen-accent-primary) !important;
+.dashbtn:hover {
+  border-color: var(--zen-border-hover) !important;
 }
 
-.btn-danger {
-  background-color: var(--zen-red) !important;
-  color: var(--zen-text-primary) !important;
-  border: none !important;
+.side-head-container {
+  padding: 20px 10px 0;
+  color: var(--zen-text) !important;
+}
+
+.cp-btn-container {
+  padding: 10px 10px 0;
+}
+
+
+/* ==========================================================
+   10. ALERTS
+   ========================================================== */
+
+.alerts-ui {
+  margin-top: 30px;
+  padding: 10px 20px;
+  padding-top: 5px;
+  border: 1px solid rgba(185, 28, 28, 0.3) !important;
+  box-shadow: none !important;
+  background: rgba(185, 28, 28, 0.06) !important;
+  border-radius: var(--zen-radius);
+}
+
+.alerts-ui ul li a {
+  color: #ef4444 !important;
+}
+
+.alert {
+  margin: 15px 0;
   border-radius: var(--zen-radius) !important;
 }
 
-.btn-link,
-a.btn-link {
-  color: var(--zen-accent-primary) !important;
+.alert-info {
+  background-color: rgba(14, 165, 233, 0.1) !important;
+  border-color: var(--zen-accent2) !important;
+  color: var(--zen-accent2) !important;
 }
 
-.btn-link:hover {
-  color: #14b8a6 !important;
+.alert-success {
+  background-color: rgba(45, 212, 191, 0.1) !important;
+  border-color: var(--zen-accent) !important;
+  color: var(--zen-accent) !important;
 }
 
-/* --- FORMS (Case creation form) --- */
+.alert-warning {
+  background-color: rgba(251, 191, 36, 0.1) !important;
+  border-color: var(--zen-yellow) !important;
+  color: var(--zen-yellow) !important;
+}
+
+.alert-danger {
+  background-color: rgba(185, 28, 28, 0.1) !important;
+  border-color: var(--zen-red) !important;
+  color: #ef4444 !important;
+}
+
+
+/* ==========================================================
+   11. FORMS (Case creation / edit)
+   ========================================================== */
+
+.btn, .form-control {
+  border-radius: var(--zen-radius) !important;
+}
+
 .form-control,
 input[type="text"],
 input[type="email"],
@@ -288,22 +550,20 @@ input[type="password"],
 input[type="number"],
 input[type="tel"],
 input[type="url"],
-input[type="search"],
 select,
 textarea {
   background-color: var(--zen-base-inner) !important;
-  color: var(--zen-text-primary) !important;
+  color: var(--zen-text) !important;
   border: 1px solid var(--zen-border) !important;
-  border-radius: var(--zen-radius) !important;
-  padding: 10px 14px !important;
-  transition: border-color 0.2s ease !important;
+  padding: 8px 12px !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
 }
 
 .form-control:focus,
 input:focus,
 select:focus,
 textarea:focus {
-  border-color: var(--zen-accent-primary) !important;
+  border-color: var(--zen-accent) !important;
   box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.15) !important;
   outline: none !important;
 }
@@ -314,169 +574,463 @@ textarea::placeholder {
   color: var(--zen-text-muted) !important;
 }
 
-label,
-.control-label,
-.form-label {
-  color: var(--zen-text-primary) !important;
+select.form-control option {
+  background-color: var(--zen-base-secondary) !important;
+  color: var(--zen-text) !important;
+  padding: 5px 0;
+}
+
+select option[default] {
+  color: var(--zen-text-muted) !important;
+}
+
+label, .control-label {
+  color: var(--zen-text) !important;
   font-weight: 600;
-  margin-bottom: 6px;
 }
 
-/* --- LINKS --- */
-a {
-  color: var(--zen-accent-primary) !important;
+form[name="commentForm"] textarea[name="comment"] {
+  min-height: 74px;
+  background-color: var(--zen-base-inner) !important;
+  color: var(--zen-text) !important;
+  border: 1px solid var(--zen-border) !important;
+}
+
+
+/* ==========================================================
+   12. BUTTONS
+   ========================================================== */
+
+.btn-primary,
+.btn-success {
+  background-color: var(--zen-accent) !important;
+  color: #172554 !important;
+  border: none !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+}
+
+.btn-primary:hover,
+.btn-success:hover,
+.btn-primary:focus,
+.btn-success:focus {
+  background-color: var(--zen-accent-hover) !important;
+  color: #172554 !important;
+  box-shadow: 0 4px 12px rgba(45, 212, 191, 0.3) !important;
+}
+
+.btn-default {
+  background-color: var(--zen-base-secondary) !important;
+  color: var(--zen-text) !important;
+  border: 1px solid var(--zen-border) !important;
+  font-weight: 500 !important;
+}
+
+.btn-default:hover,
+.btn-default:focus {
+  border-color: var(--zen-accent) !important;
+  color: var(--zen-accent) !important;
+  background-color: var(--zen-base-secondary) !important;
+}
+
+.btn-danger {
+  background-color: var(--zen-red) !important;
+  color: var(--zen-text) !important;
+  border: none !important;
+}
+
+.btn-danger:hover {
+  background-color: #991b1b !important;
+}
+
+.btn-info {
+  background-color: var(--zen-accent2) !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.btn-link {
+  color: var(--zen-accent) !important;
+  background: transparent !important;
+}
+
+.btn-link:hover {
+  color: var(--zen-accent-hover) !important;
+}
+
+
+/* ==========================================================
+   13. SEARCH
+   ========================================================== */
+
+.search-container {
+  z-index: 20;
+}
+
+.fieldcontainer {
+  border: 1px solid var(--zen-border) !important;
+  background-color: var(--zen-base-inner) !important;
+  border-radius: var(--zen-radius);
+}
+
+.searchfield {
+  background-color: var(--zen-base-inner) !important;
+  color: var(--zen-text) !important;
+  border: 0 !important;
+  width: 240px;
+  padding: 6px 7px;
+}
+
+.searchfield:focus {
+  color: var(--zen-text) !important;
+  outline: none !important;
+}
+
+
+/* ==========================================================
+   14. DROPDOWNS
+   ========================================================== */
+
+.dropdown-menu {
+  background-color: var(--zen-base-secondary) !important;
+  border: 1px solid var(--zen-border) !important;
+  border-radius: var(--zen-radius) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4) !important;
+}
+
+.dropdown-menu > li > a {
+  color: var(--zen-text) !important;
+  padding: 8px 16px;
+}
+
+.dropdown-menu > li > a:hover {
+  background-color: var(--zen-accent-soft) !important;
+  color: var(--zen-accent) !important;
+}
+
+.dropdown-content-download {
+  background-color: var(--zen-base-secondary) !important;
+  border: 1px solid var(--zen-border) !important;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4) !important;
+  border-radius: var(--zen-radius);
+}
+
+.dropdown-content-download a {
+  color: var(--zen-text) !important;
+}
+
+.dropdown-content-download a:hover {
+  background-color: var(--zen-accent-soft) !important;
+  color: var(--zen-accent) !important;
+}
+
+.categoryDropdown {
+  font-size: 1em;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 10px;
+  background-color: var(--zen-base-secondary) !important;
+  color: var(--zen-text) !important;
+}
+
+.selectricWrapper {
+  float: left;
+  padding-left: 0;
+  min-width: 210px;
+}
+
+
+/* ==========================================================
+   15. MODALS
+   ========================================================== */
+
+.modal-content {
+  background-color: var(--zen-base-secondary) !important;
+  border: 1px solid var(--zen-border) !important;
+  border-radius: var(--zen-radius) !important;
+  color: var(--zen-text) !important;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5) !important;
+}
+
+.modal-header {
+  border-bottom: 1px solid var(--zen-border) !important;
+  background-color: var(--zen-base-primary) !important;
+  border-radius: var(--zen-radius) var(--zen-radius) 0 0 !important;
+}
+
+.modal-header .close {
+  color: var(--zen-text) !important;
+  opacity: 0.7;
+}
+
+.modal-header .close:hover {
+  color: var(--zen-accent) !important;
+  opacity: 1;
+}
+
+.modal-title {
+  color: var(--zen-text) !important;
+  font-weight: 700;
+}
+
+.modal-body {
+  background-color: var(--zen-base-secondary) !important;
+  color: var(--zen-text) !important;
+}
+
+.modal-footer {
+  border-top: 1px solid var(--zen-border) !important;
+  background-color: var(--zen-base-primary) !important;
+  border-radius: 0 0 var(--zen-radius) var(--zen-radius) !important;
+}
+
+
+/* ==========================================================
+   16. PAGINATION
+   ========================================================== */
+
+.pagination {
+  margin: 0;
+  margin-top: 5px;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+  background-color: var(--zen-base-secondary) !important;
+  color: var(--zen-text) !important;
+  border: 1px solid var(--zen-border) !important;
+}
+
+.pagination > li > a:hover {
+  background-color: var(--zen-accent-soft) !important;
+  color: var(--zen-accent) !important;
+  border-color: var(--zen-accent) !important;
+}
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover {
+  background-color: var(--zen-accent) !important;
+  color: #172554 !important;
+  border-color: var(--zen-accent) !important;
+  font-weight: 600;
+}
+
+.pagination > .disabled > a,
+.pagination > .disabled > span {
+  background-color: var(--zen-base-inner) !important;
+  color: var(--zen-text-muted) !important;
+  border-color: var(--zen-border) !important;
+}
+
+.pager li > a,
+.pager li > span {
+  border-radius: var(--zen-radius) !important;
+  padding: 6px 15px;
+  background-color: var(--zen-base-secondary) !important;
+  color: var(--zen-text) !important;
+  border: 1px solid var(--zen-border) !important;
+}
+
+
+/* ==========================================================
+   17. FAQ SECTION
+   ========================================================== */
+
+.faqSection {
+  color: var(--zen-text) !important;
+}
+
+.rs-sectionbar li,
+.atch-docs li {
+  margin: 10px 0;
+  font-size: 1.1em;
+  color: var(--zen-text) !important;
+}
+
+.atch-docs li a:hover {
   text-decoration: none !important;
+  color: var(--zen-accent) !important;
 }
 
-a:hover {
-  color: #14b8a6 !important;
-  text-decoration: none !important;
+.qlink {
+  padding: 10px;
+  color: var(--zen-text) !important;
 }
 
-/* --- CASE STATUS BADGES --- */
+
+/* ==========================================================
+   18. BADGES & LABELS (Case statuses)
+   ========================================================== */
+
 .badge,
 .label,
-.tag,
-.status-badge,
-span.badge {
+.tag {
   border-radius: 20px !important;
   padding: 4px 12px !important;
   font-weight: 600 !important;
   font-size: 0.8em !important;
 }
 
-/* Customize based on your case status values */
-.badge-success,
-.label-success {
+.label-success,
+.badge-success {
   background-color: rgba(45, 212, 191, 0.15) !important;
-  color: var(--zen-accent-primary) !important;
-  border: 1px solid var(--zen-accent-primary) !important;
+  color: var(--zen-accent) !important;
 }
 
-.badge-warning,
-.label-warning {
+.label-warning,
+.badge-warning {
   background-color: rgba(251, 191, 36, 0.15) !important;
-  color: #fbbf24 !important;
-  border: 1px solid #fbbf24 !important;
+  color: var(--zen-yellow) !important;
 }
 
-.badge-danger,
-.label-danger {
-  background-color: rgba(239, 68, 68, 0.15) !important;
+.label-danger,
+.badge-danger {
+  background-color: rgba(185, 28, 28, 0.15) !important;
   color: #ef4444 !important;
-  border: 1px solid #ef4444 !important;
 }
 
-.badge-info,
-.label-info {
+.label-info,
+.badge-info {
   background-color: rgba(14, 165, 233, 0.15) !important;
-  color: var(--zen-accent-secondary) !important;
-  border: 1px solid var(--zen-accent-secondary) !important;
+  color: var(--zen-accent2) !important;
 }
 
-.badge-default,
-.label-default {
+.label-default,
+.badge-default {
   background-color: rgba(148, 163, 184, 0.15) !important;
-  color: var(--zen-text-secondary) !important;
-  border: 1px solid var(--zen-text-secondary) !important;
+  color: var(--zen-text-dim) !important;
 }
 
-/* --- PAGINATION --- */
-.pagination > li > a,
-.pagination > li > span {
-  background-color: var(--zen-base-secondary) !important;
-  color: var(--zen-text-primary) !important;
-  border: 1px solid var(--zen-border) !important;
+.label-primary,
+.badge-primary {
+  background-color: rgba(45, 212, 191, 0.15) !important;
+  color: var(--zen-accent) !important;
 }
 
-.pagination > .active > a,
-.pagination > .active > span {
-  background-color: var(--zen-accent-primary) !important;
-  color: #172554 !important;
-  border-color: var(--zen-accent-primary) !important;
-}
 
-.pagination > li > a:hover {
-  background-color: rgba(45, 212, 191, 0.1) !important;
-  color: var(--zen-accent-primary) !important;
-}
+/* ==========================================================
+   19. WELL, PANEL, CARD (Bootstrap)
+   ========================================================== */
 
-/* --- DROPDOWN MENUS --- */
-.dropdown-menu {
+.well {
   background-color: var(--zen-base-secondary) !important;
   border: 1px solid var(--zen-border) !important;
+  box-shadow: none !important;
   border-radius: var(--zen-radius) !important;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3) !important;
+  color: var(--zen-text) !important;
 }
 
-.dropdown-menu > li > a,
-.dropdown-item {
-  color: var(--zen-text-primary) !important;
-}
-
-.dropdown-menu > li > a:hover,
-.dropdown-item:hover {
-  background-color: rgba(45, 212, 191, 0.1) !important;
-  color: var(--zen-accent-primary) !important;
-}
-
-/* --- MODALS --- */
-.modal-content {
+.panel, .panel-default {
   background-color: var(--zen-base-secondary) !important;
   border: 1px solid var(--zen-border) !important;
+  box-shadow: none !important;
   border-radius: var(--zen-radius) !important;
-  color: var(--zen-text-primary) !important;
 }
 
-.modal-header {
+.panel-heading {
+  background-color: var(--zen-base-inner) !important;
   border-bottom: 1px solid var(--zen-border) !important;
-  background-color: var(--zen-base-primary) !important;
+  color: var(--zen-text) !important;
+  border-radius: var(--zen-radius) var(--zen-radius) 0 0 !important;
 }
 
-.modal-header .close,
-.modal-header button {
-  color: var(--zen-text-primary) !important;
-}
-
-.modal-footer {
-  border-top: 1px solid var(--zen-border) !important;
-  background-color: var(--zen-base-primary) !important;
-}
-
-.modal-title {
-  color: var(--zen-text-primary) !important;
-  font-weight: 700;
-}
-
-/* --- LOGIN PAGE --- */
-.login-container,
-.login-page,
-.login-box,
-.auth-container {
-  background-color: var(--zen-base-primary) !important;
-}
-
-.login-form,
-.login-panel,
-.auth-box {
+.panel-body {
   background-color: var(--zen-base-secondary) !important;
+  color: var(--zen-text) !important;
+}
+
+.panel-footer {
+  background-color: var(--zen-base-inner) !important;
+  border-top: 1px solid var(--zen-border) !important;
+  border-radius: 0 0 var(--zen-radius) var(--zen-radius) !important;
+}
+
+.list-group-item {
+  background-color: var(--zen-base-secondary) !important;
+  border: 1px solid var(--zen-border) !important;
+  color: var(--zen-text) !important;
+}
+
+.list-group-item:hover {
+  background-color: var(--zen-accent-soft) !important;
+}
+
+
+/* ==========================================================
+   20. FOOTER
+   ========================================================== */
+
+.app-footer {
+  position: absolute;
+  bottom: -30px;
+  width: 100%;
+}
+
+.app-footer p {
+  width: 100%;
+  text-align: center;
+  background: var(--zen-base-primary) !important;
+  color: var(--zen-text-muted) !important;
+  margin-bottom: 0;
+  padding: 8px 0;
+  border-top: 1px solid var(--zen-border) !important;
+  font-size: 0.85em;
+}
+
+
+/* ==========================================================
+   21. BREADCRUMBS
+   ========================================================== */
+
+.breadcrumb {
+  background-color: transparent !important;
+  color: var(--zen-text-dim) !important;
+}
+
+.breadcrumb > .active {
+  color: var(--zen-text) !important;
+}
+
+.breadcrumb > li + li::before {
+  color: var(--zen-text-muted) !important;
+}
+
+
+/* ==========================================================
+   22. TOOLTIPS & POPOVERS
+   ========================================================== */
+
+.tooltip-inner {
+  background-color: var(--zen-base-inner) !important;
+  color: var(--zen-text) !important;
   border: 1px solid var(--zen-border) !important;
   border-radius: var(--zen-radius) !important;
 }
 
-/* --- FOOTER --- */
-footer,
-.portal-footer,
-.app-footer {
-  background-color: var(--zen-base-primary) !important;
-  border-top: 1px solid var(--zen-border) !important;
-  color: var(--zen-text-secondary) !important;
+.popover {
+  background-color: var(--zen-base-secondary) !important;
+  border: 1px solid var(--zen-border) !important;
 }
 
-/* --- SCROLLBARS (Webkit) --- */
+.popover-title {
+  background-color: var(--zen-base-inner) !important;
+  border-bottom: 1px solid var(--zen-border) !important;
+  color: var(--zen-text) !important;
+}
+
+.popover-content {
+  color: var(--zen-text) !important;
+}
+
+
+/* ==========================================================
+   23. SCROLLBARS
+   ========================================================== */
+
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -485,93 +1039,88 @@ footer,
 
 ::-webkit-scrollbar-thumb {
   background: var(--zen-text-muted);
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--zen-accent-primary);
+  background: var(--zen-accent);
 }
 
-/* --- ALERTS & NOTIFICATIONS --- */
-.alert {
-  border-radius: var(--zen-radius) !important;
-  border: 1px solid !important;
+
+/* ==========================================================
+   24. MOBILE ADJUSTMENTS
+   ========================================================== */
+
+@media screen and (max-device-width: 640px) {
+  .selectricWrapper {
+    padding-left: 15px;
+    padding: 10px;
+  }
+
+  .pagination-holder {
+    margin-top: 10px !important;
+  }
+
+  .ticket-detail-header-buttons {
+    padding-right: 95px;
+    padding-top: 15px;
+  }
+
+  .modal-body {
+    height: 350px;
+    overflow-y: scroll !important;
+    background-color: var(--zen-base-secondary) !important;
+  }
+
+  .headerLinks {
+    margin-top: 0px;
+  }
+
+  .navbar-toggle {
+    float: left !important;
+  }
+
+  .navbar-collapse {
+    background-color: var(--zen-base-primary) !important;
+  }
 }
 
-.alert-info {
-  background-color: rgba(14, 165, 233, 0.1) !important;
-  border-color: var(--zen-accent-secondary) !important;
-  color: var(--zen-accent-secondary) !important;
+
+/* ==========================================================
+   25. ADDITIONAL VISUAL POLISH
+   ========================================================== */
+
+/* Smooth transitions on interactive elements */
+.btn,
+.form-control,
+.listViewEntries,
+.detailRow,
+a,
+.nav > li > a {
+  transition: all 0.2s ease !important;
 }
 
-.alert-success {
-  background-color: rgba(45, 212, 191, 0.1) !important;
-  border-color: var(--zen-accent-primary) !important;
-  color: var(--zen-accent-primary) !important;
+/* Plus box (file upload) */
+.plus-box {
+  width: 100px;
+  height: 100px;
+  border: 1px dashed var(--zen-border) !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--zen-text-muted) !important;
+  border-radius: var(--zen-radius);
+  transition: border-color 0.2s ease;
 }
 
-.alert-warning {
-  background-color: rgba(251, 191, 36, 0.1) !important;
-  border-color: #fbbf24 !important;
-  color: #fbbf24 !important;
+.plus-box:hover {
+  border-color: var(--zen-accent) !important;
+  color: var(--zen-accent) !important;
 }
 
-.alert-danger {
-  background-color: rgba(239, 68, 68, 0.1) !important;
-  border-color: #ef4444 !important;
-  color: #ef4444 !important;
-}
-
-/* --- BREADCRUMBS --- */
-.breadcrumb {
-  background-color: transparent !important;
-  color: var(--zen-text-secondary) !important;
-}
-
-.breadcrumb a {
-  color: var(--zen-accent-primary) !important;
-}
-
-.breadcrumb > .active {
-  color: var(--zen-text-primary) !important;
-}
-
-/* --- SEARCH BAR --- */
-.search-bar,
-.search-input,
-input[type="search"] {
-  background-color: var(--zen-base-inner) !important;
-  color: var(--zen-text-primary) !important;
-  border: 1px solid var(--zen-border) !important;
-}
-
-/* --- TOOLTIPS --- */
-.tooltip-inner {
-  background-color: var(--zen-base-inner) !important;
-  color: var(--zen-text-primary) !important;
-  border: 1px solid var(--zen-border) !important;
-  border-radius: var(--zen-radius) !important;
-}
-
-/* --- MISC OVERRIDES --- */
-h1, h2, h3, h4, h5, h6 {
-  color: var(--zen-text-primary) !important;
-}
-
-p {
-  color: var(--zen-text-primary) !important;
-}
-
-hr {
-  border-color: var(--zen-border) !important;
-}
-
-/* Hide Vtiger branding if desired */
-/* Uncomment the line below to hide "Powered by Vtiger" */
-/* .powered-by, .vtiger-branding, footer .vtiger-logo { display: none !important; } */
-
-/* --- SELECTION COLOR --- */
-::selection {
-  background-color: var(--zen-accent-primary);
-  color: #172554;
+/* Correctional action icon */
+.correctiveActionIcon {
+  padding: 8px;
+  padding-left: 0px;
+  color: var(--zen-text) !important;
 }
