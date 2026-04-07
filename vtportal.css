@@ -1,3 +1,10 @@
+/* ============================================================
+   ZENDATA CYBERSECURITY - Vtiger Customer Portal Theme
+   Version: 4.0 - Fixes: chart bg, highlighted rows, text overflow
+   Last Updated: 2026-04-07
+
+   ============================================================ */
+
 @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap');
 
 :root {
@@ -19,34 +26,65 @@
   --zen-radius: 6px;
 }
 
-/* 1. GLOBAL */
-body, html { font-family: var(--zen-font) !important; background-color: var(--zen-base-primary) !important; color: var(--zen-text) !important; }
+
+/* ==========================================================
+   1. GLOBAL RESET
+   ========================================================== */
+
+body, html {
+  font-family: var(--zen-font) !important;
+  background-color: var(--zen-base-primary) !important;
+  color: var(--zen-text) !important;
+}
+
+/* Icon font protection */
 .glyphicon, [class^="glyphicon-"], [class*=" glyphicon-"] { font-family: 'Glyphicons Halflings' !important; }
 .fa, .fa-solid, .fa-regular, .fa-brands, [class^="fa-"], [class*=" fa-"] { font-family: 'FontAwesome' !important; }
+
 a { color: var(--zen-accent) !important; transition: color 0.2s ease; }
 a:hover, a:focus { color: var(--zen-accent-hover) !important; text-decoration: none !important; }
 h1, h2, h3, h4, h5, h6, .page-header, p, span, div, li, td, th, label { color: var(--zen-text) !important; }
 hr, .hrHeader { border-color: var(--zen-border) !important; }
 ::selection { background-color: var(--zen-accent); color: #172554; }
 
-/* 2. PAGE STRUCTURE */
-.webapp-page { background-color: var(--zen-base-primary) !important; }
-.main-container, .container-fluid, .container-fluid.main-container { background-color: var(--zen-base-primary) !important; }
-.page-header { border: 0 !important; color: var(--zen-text) !important; }
-[ng-controller] { background-color: var(--zen-base-primary) !important; }
 
-/* 3. NAVBAR */
+/* ==========================================================
+   2. PAGE STRUCTURE
+   ========================================================== */
+
+.webapp-page { background-color: var(--zen-base-primary) !important; }
+
+.main-container,
+.container-fluid,
+.container-fluid.main-container,
+[ng-controller],
+.charts-container,
+.updatesContainer,
+.tickets-panel-container {
+  background-color: var(--zen-base-primary) !important;
+}
+
+.page-header { border: 0 !important; color: var(--zen-text) !important; }
+
+
+/* ==========================================================
+   3. NAVBAR / HEADER
+   ========================================================== */
+
 .navbar { background-color: var(--zen-base-primary) !important; border-bottom: 1px solid var(--zen-border) !important; box-shadow: none !important; }
 .navbar-inverse { background-color: var(--zen-base-primary) !important; border-color: var(--zen-border) !important; }
 .navbar-default { background-color: var(--zen-base-primary) !important; border-color: var(--zen-border) !important; }
 .navbar-nav > li > a { color: var(--zen-text) !important; font-weight: 500; transition: color 0.2s ease, background 0.2s ease; }
 .navbar-nav > li > a:hover, .nav > li > a:hover { background: var(--zen-accent-soft) !important; color: var(--zen-accent) !important; }
-.navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus { background-color: var(--zen-accent) !important; color: #172554 !important; border-radius: var(--zen-radius) !important; font-weight: 700; }
+.navbar-nav > .active > a,
+.navbar-nav > .active > a:hover,
+.navbar-nav > .active > a:focus { background-color: var(--zen-accent) !important; color: #172554 !important; border-radius: var(--zen-radius) !important; font-weight: 700; }
 .navbar-brand { color: var(--zen-text) !important; }
 .navbar-toggle { border-color: var(--zen-border) !important; }
 .navbar-toggle .icon-bar { background-color: var(--zen-text) !important; }
 .navbar-collapse { background-color: var(--zen-base-primary) !important; border-color: var(--zen-border) !important; }
-.portalnavbar, .headerLinks { background-color: var(--zen-base-primary) !important; }
+.portalnavbar { background-color: var(--zen-base-primary) !important; }
+.headerLinks { background-color: var(--zen-base-primary) !important; }
 .company-logo { height: 80px; padding: 10px; }
 .logo-left { height: 50px; }
 .logo-left img { margin: 10px 20px; height: 30px; }
@@ -54,35 +92,164 @@ hr, .hrHeader { border-color: var(--zen-border) !important; }
 .faqs-link:hover, .logout-links:hover { color: var(--zen-accent) !important; }
 .menu { width: 100%; margin-left: 0px; }
 
-/* 4. TABS */
-.nav-tabs { border-bottom: 1px solid var(--zen-border) !important; }
-.nav-tabs > li > a { color: var(--zen-text-dim) !important; background: transparent !important; border: none !important; }
-.nav-tabs > li > a:hover { color: var(--zen-accent) !important; background: transparent !important; border: none !important; border-bottom: 2px solid var(--zen-accent) !important; }
-.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus { color: var(--zen-accent) !important; background: transparent !important; border: none !important; border-bottom: 3px solid var(--zen-accent) !important; }
-.tab-content { background-color: var(--zen-base-primary) !important; color: var(--zen-text) !important; padding: 15px 0 !important; }
 
-/* 5. SIDEBAR */
-.left-panel { min-height: 590px; background: var(--zen-base-secondary) !important; border-right: 1px solid var(--zen-border) !important; }
+/* ==========================================================
+   4. SEARCH BOX
+   ========================================================== */
 
-/* 6. LOGIN */
-.login-form { background: var(--zen-base-secondary) !important; border: 1px solid var(--zen-border) !important; border-radius: var(--zen-radius) !important; padding: 25px 30px !important; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important; }
+.search-container { z-index: 20; }
+.search-wrapper { display: inline-block; }
+.search-results-container { position: relative; }
+.search-results-container label { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); }
+.search-box, input.search-box, #search-box {
+  background-color: var(--zen-base-inner) !important;
+  color: var(--zen-text) !important;
+  border: 1px solid var(--zen-border) !important;
+  border-radius: var(--zen-radius) !important;
+  padding: 6px 30px 6px 10px !important;
+}
+.search-box::placeholder, #search-box::placeholder { color: var(--zen-text-muted) !important; }
+.search-box:focus, #search-box:focus { border-color: var(--zen-accent) !important; box-shadow: 0 0 0 2px rgba(45, 212, 191, 0.15) !important; outline: none !important; }
+.search-icon, .glyphicon-search { color: var(--zen-accent) !important; }
+.fieldcontainer { border: 1px solid var(--zen-border) !important; background-color: var(--zen-base-inner) !important; border-radius: var(--zen-radius); }
+.searchfield { background-color: var(--zen-base-inner) !important; color: var(--zen-text) !important; border: 0 !important; width: 240px; padding: 6px 7px; }
+.searchfield:focus { color: var(--zen-text) !important; outline: none !important; }
+
+
+/* ==========================================================
+   5. LEFT PANEL / SIDEBAR
+   ========================================================== */
+
+.left-panel {
+  min-height: 590px;
+  background: var(--zen-base-secondary) !important;
+  border-right: 1px solid var(--zen-border) !important;
+}
+
+
+/* ==========================================================
+   6. LOGIN FORM
+   ========================================================== */
+
+.login-form {
+  background: var(--zen-base-secondary) !important;
+  border: 1px solid var(--zen-border) !important;
+  border-radius: var(--zen-radius) !important;
+  padding: 25px 30px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+}
 .login-form label { color: var(--zen-text) !important; font-weight: 600; }
 .login-form .form-control { background-color: var(--zen-base-inner) !important; color: var(--zen-text) !important; border: 1px solid var(--zen-border) !important; }
 
-/* 7. TABLES */
+
+/* ==========================================================
+   7. TABLES & LIST VIEWS
+   ========================================================== */
+
 .cp-table-container { font-size: 13px; margin-bottom: 20px; }
 .cp-table-container table { margin-bottom: 0; border-bottom: 1px solid var(--zen-border) !important; }
 .table-header { margin-top: 20px; background: var(--zen-base-inner) !important; border: 1px solid var(--zen-border) !important; padding: 0 20px; color: var(--zen-text) !important; }
 table, .table { color: var(--zen-text) !important; }
-.table > thead > tr > th, .bordered-table th, .listViewHeaders th, tr.listViewHeaders th { background-color: var(--zen-base-inner) !important; color: var(--zen-accent) !important; border: 1px solid var(--zen-border) !important; border-bottom: 2px solid var(--zen-border) !important; font-weight: 700 !important; font-size: 0.8em !important; text-transform: uppercase !important; letter-spacing: 0.5px !important; }
+
+/* Column headers */
+.table > thead > tr > th,
+.bordered-table th,
+.listViewHeaders th,
+tr.listViewHeaders th {
+  background-color: var(--zen-base-inner) !important;
+  color: var(--zen-accent) !important;
+  border: 1px solid var(--zen-border) !important;
+  border-bottom: 2px solid var(--zen-border) !important;
+  font-weight: 700 !important;
+  font-size: 0.8em !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
 .listViewHeaderValues { color: var(--zen-accent) !important; text-decoration: none !important; }
 .listViewLastActionHeader { background-color: var(--zen-base-inner) !important; }
-.table > tbody > tr > td, .table > tbody > tr > th, .bordered-table td, .listViewEntries td { background-color: var(--zen-base-secondary) !important; color: var(--zen-text) !important; border-bottom: 1px solid var(--zen-border) !important; }
+
+/* --- NORMAL ROWS --- */
+.table > tbody > tr > td,
+.table > tbody > tr > th,
+.bordered-table td,
+.listViewEntries td {
+  background-color: var(--zen-base-secondary) !important;
+  color: var(--zen-text) !important;
+  border-bottom: 1px solid var(--zen-border) !important;
+}
 .listViewEntries { cursor: pointer; height: 48px; transition: background 0.15s ease; }
-.listViewEntries:hover td, .listViewEntries:hover { background-color: rgba(45, 212, 191, 0.08) !important; color: var(--zen-text) !important; }
+
+/* ============================================================
+   FIX #1: HIGHLIGHTED / SELECTED / CONTEXTUAL ROWS
+   These Bootstrap and Vtiger classes cause white-on-white rows
+   ============================================================ */
+
+/* Bootstrap contextual row classes */
+.table > tbody > tr.info > td,
+.table > tbody > tr.active > td,
+.table > tbody > tr.success > td,
+.table > tbody > tr.warning > td,
+.table > tbody > tr.danger > td,
+tr.info > td,
+tr.active > td,
+tr.success > td,
+tr.warning > td,
+tr.danger > td,
+.table > tbody > tr.info > th,
+.table > tbody > tr.active > th,
+.table > tbody > tr.success > th {
+  background-color: var(--zen-base-secondary) !important;
+  color: var(--zen-text) !important;
+}
+
+/* Vtiger highlight/selection classes */
+tr.listViewEntries.highlighted td,
+tr.listViewEntries.selectedListEntry td,
+tr.listViewEntries.selected td,
+tr.listViewEntries.active td,
+.listViewEntries.highlighted td,
+.listViewEntries.selectedListEntry td,
+.listViewEntries.selected td {
+  background-color: rgba(45, 212, 191, 0.12) !important;
+  color: var(--zen-text) !important;
+}
+
+/* Override ANY inline background-color on rows */
+tr.listViewEntries[style] td,
+tr[style*="background"] td,
+tr[style*="background"] > td,
+tbody > tr[style] > td {
+  background-color: var(--zen-base-secondary) !important;
+  color: var(--zen-text) !important;
+}
+
+/* Hover states */
+.listViewEntries:hover td,
+.listViewEntries:hover,
+.table-hover > tbody > tr:hover > td,
+.table-hover > tbody > tr:hover > th,
+.table-hover > tbody > tr:hover {
+  background-color: rgba(45, 212, 191, 0.08) !important;
+  color: var(--zen-text) !important;
+}
+
+/* Striped rows */
 .table-striped > tbody > tr:nth-of-type(odd) > td { background-color: var(--zen-base-inner) !important; }
+.table-striped > tbody > tr:nth-of-type(even) > td { background-color: var(--zen-base-secondary) !important; }
+
+/* Striped + contextual override */
+.table-striped > tbody > tr.info > td,
+.table-striped > tbody > tr.active > td,
+.table-striped > tbody > tr.success > td {
+  background-color: var(--zen-base-secondary) !important;
+  color: var(--zen-text) !important;
+}
+
+/* Table-responsive */
 .table-responsive { overflow-x: auto; border: 1px solid var(--zen-border) !important; border-radius: var(--zen-radius); }
 .bordered-table { width: 100%; border-collapse: collapse; }
+
+/* Search row */
 .searchRow td { background-color: var(--zen-base-inner) !important; border-bottom: 1px solid var(--zen-border) !important; }
 .searchRow .searchElement input, .searchRow .searchElement .form-control { background-color: var(--zen-base-secondary) !important; color: var(--zen-text) !important; border: 1px solid var(--zen-border) !important; }
 .listTableFirstCell { background-color: var(--zen-base-secondary) !important; }
@@ -90,24 +257,135 @@ table, .table { color: var(--zen-text) !important; }
 .listViewActionsColumn { background-color: var(--zen-base-secondary) !important; }
 .panel-transparent, .panel-table-body { background-color: transparent !important; }
 
-/* 8. DETAIL VIEW */
-.detailRow { padding: 8px 12px; border-bottom: 1px solid rgba(45, 212, 191, 0.1); background-color: var(--zen-base-primary) !important; }
-.detailRow:hover { background: var(--zen-accent-soft) !important; }
-.detailRow .fieldLabel { padding-top: 10px; font-size: 13px; color: var(--zen-text-dim) !important; font-weight: 600; }
-.detailRow .value { background: var(--zen-base-inner) !important; border: 1px solid var(--zen-border) !important; padding: 8px 12px !important; color: var(--zen-text) !important; border-radius: var(--zen-radius) !important; word-wrap: break-word !important; overflow-wrap: break-word !important; max-width: 100% !important; float: none !important; display: block !important; }
-.detailRow .label { padding: 10px; color: var(--zen-text-dim) !important; }
-.detailRow p.value { margin-bottom: 0; color: var(--zen-text) !important; }
-.value.detail-break { word-wrap: break-word !important; word-break: break-word !important; overflow-wrap: break-word !important; white-space: pre-wrap !important; max-width: 100% !important; display: block !important; overflow: hidden !important; }
-.editContainer { border-bottom: 1px solid var(--zen-border) !important; }
-.leftEditContent { min-height: 450px; padding-top: 20px; border-right: 1px solid var(--zen-border) !important; background-color: var(--zen-base-primary) !important; }
-.leftEditContent.nosplit { border-right: none !important; }
-.rightEditContent, .rightEditContent .tab-content, .rightEditContent .tab-pane { background: var(--zen-base-primary) !important; border-left: 1px solid var(--zen-border) !important; overflow-x: hidden !important; word-wrap: break-word !important; overflow-wrap: break-word !important; }
-.rightEditContent { min-height: 450px; padding-top: 20px; }
-.ticket-detail-header-row { padding: 15px 0 !important; border-bottom: 1px solid var(--zen-border) !important; margin-bottom: 15px !important; background-color: var(--zen-base-primary) !important; }
+
+/* ==========================================================
+   8. DETAIL VIEW (Case details)
+   ========================================================== */
+
+.ticket-detail-header-row {
+  padding: 15px 0 !important;
+  border-bottom: 1px solid var(--zen-border) !important;
+  margin-bottom: 15px !important;
+  background-color: var(--zen-base-primary) !important;
+}
 .ticket-detail-header-row .fsmall { color: var(--zen-text) !important; }
 .ticket-detail-header-row a { color: var(--zen-accent) !important; }
 
-/* 9. COMMENTS */
+.detailRow {
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(45, 212, 191, 0.1);
+  background-color: var(--zen-base-primary) !important;
+}
+.detailRow:hover { background: var(--zen-accent-soft) !important; }
+.detailRow .fieldLabel { padding-top: 10px; font-size: 13px; color: var(--zen-text-dim) !important; font-weight: 600; }
+.detailRow .value {
+  background: var(--zen-base-inner) !important;
+  border: 1px solid var(--zen-border) !important;
+  padding: 8px 12px !important;
+  color: var(--zen-text) !important;
+  border-radius: var(--zen-radius) !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  max-width: 100% !important;
+  float: none !important;
+  display: block !important;
+}
+.detailRow .label { padding: 10px; color: var(--zen-text-dim) !important; }
+.detailRow p.value { margin-bottom: 0; color: var(--zen-text) !important; }
+
+.value.detail-break {
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  white-space: pre-wrap !important;
+  max-width: 100% !important;
+  display: block !important;
+  overflow: hidden !important;
+}
+
+.editContainer { border-bottom: 1px solid var(--zen-border) !important; }
+
+.leftEditContent {
+  min-height: 450px;
+  padding-top: 20px;
+  border-right: 1px solid var(--zen-border) !important;
+  background-color: var(--zen-base-primary) !important;
+}
+.leftEditContent.nosplit { border-right: none !important; }
+
+/* ============================================================
+   FIX #3: RIGHT PANEL TEXT OVERFLOW
+   Force hard boundaries on the right column
+   ============================================================ */
+
+.rightEditContent {
+  min-height: 450px;
+  padding-top: 20px;
+  background: var(--zen-base-primary) !important;
+  border-left: 1px solid var(--zen-border) !important;
+  overflow: hidden !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.rightEditContent .tab-content,
+.rightEditContent .tab-pane {
+  background: var(--zen-base-primary) !important;
+  overflow: hidden !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Force ALL children inside right panel to respect boundaries */
+.rightEditContent * {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.rightEditContent p,
+.rightEditContent div,
+.rightEditContent span,
+.rightEditContent td,
+.rightEditContent pre,
+.rightEditContent blockquote {
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  word-break: break-word !important;
+  white-space: pre-wrap !important;
+  overflow: hidden !important;
+}
+
+/* Tables inside right panel must not expand beyond container */
+.rightEditContent table {
+  table-layout: fixed !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Images and iframes in right panel */
+.rightEditContent img,
+.rightEditContent iframe {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* Tab navigation */
+.nav-tabs { border-bottom: 1px solid var(--zen-border) !important; }
+.nav-tabs > li > a { color: var(--zen-text-dim) !important; background: transparent !important; border: none !important; }
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus { color: var(--zen-accent) !important; background: transparent !important; border: none !important; border-bottom: 3px solid var(--zen-accent) !important; }
+.tab-content { background-color: var(--zen-base-primary) !important; color: var(--zen-text) !important; padding: 15px 0 !important; }
+
+
+/* ==========================================================
+   9. COMMENTS / UPDATES
+   ========================================================== */
+
 .commentsContainer { background: transparent !important; }
 .usertitle { font-family: var(--zen-font) !important; margin-bottom: 2px; }
 .usertitle .uname { color: var(--zen-text) !important; font-weight: 600; }
@@ -121,7 +399,11 @@ table, .table { color: var(--zen-text) !important; }
 .comment-list { color: var(--zen-text) !important; }
 .updatesContainer { background-color: var(--zen-base-primary) !important; }
 
-/* 10. SECTIONS */
+
+/* ==========================================================
+   10. HOME SECTIONS
+   ========================================================== */
+
 .cp-section { padding: 20px; color: var(--zen-text) !important; text-shadow: none !important; }
 .cp-block { margin-top: 15px; padding: 12px; border: 1px solid var(--zen-border) !important; background: var(--zen-base-secondary) !important; box-shadow: none !important; border-radius: var(--zen-radius); }
 .cp-callout { margin: 20px 0; padding: 20px; border-left: 3px solid var(--zen-accent) !important; background-color: var(--zen-base-secondary) !important; border-radius: 0 var(--zen-radius) var(--zen-radius) 0; }
@@ -134,8 +416,6 @@ table, .table { color: var(--zen-text) !important; }
 .cp-btn-container { padding: 10px 10px 0; }
 .separator { border-bottom: 1px solid var(--zen-border) !important; padding-bottom: 10px !important; margin-bottom: 10px !important; }
 .portal-welcome { color: var(--zen-text) !important; }
-
-/* 11. TICKETS (Home) */
 .tickets-panel-container .panel-heading, .tickets-panel-container .panel-title { color: var(--zen-text) !important; font-weight: 700 !important; }
 .tickets-panel-content { background-color: var(--zen-base-secondary) !important; border: 1px solid var(--zen-border) !important; border-radius: var(--zen-radius) !important; margin-bottom: 12px !important; }
 .tickets-panel-heading { padding: 12px 15px !important; }
@@ -144,7 +424,89 @@ table, .table { color: var(--zen-text) !important; }
 .shortcut-container .panel { background-color: var(--zen-base-secondary) !important; border: 1px solid var(--zen-border) !important; }
 .shortcut-button .btn { width: 100% !important; margin-bottom: 8px !important; text-align: left !important; }
 
-/* 12. ALERTS */
+
+/* ============================================================
+   FIX #2: HIGHCHARTS - FORCE DARK BACKGROUND EVERYWHERE
+   Highcharts renders white via SVG rect + container div + parent
+   ============================================================ */
+
+/* The SVG background rect (always the first rect in Highcharts SVG) */
+.highcharts-background {
+  fill: var(--zen-base-secondary) !important;
+}
+
+/* The container div Highcharts creates */
+.highcharts-container {
+  background-color: var(--zen-base-secondary) !important;
+}
+
+/* The first SVG rect child (Highcharts background) */
+.highcharts-container svg > rect:first-child {
+  fill: var(--zen-base-secondary) !important;
+}
+
+/* The div with data-highcharts-chart attribute */
+[data-highcharts-chart] {
+  background-color: var(--zen-base-secondary) !important;
+}
+
+/* Catch-all for any highcharts-related div */
+div[id*="highcharts"],
+div[class*="highcharts"] {
+  background-color: var(--zen-base-secondary) !important;
+}
+
+/* Parent wrappers around the chart */
+.charts-container,
+.charts-container > div,
+.charts-container > div > div,
+.charts-container .panel,
+.charts-container .panel-body,
+.charts-container .well {
+  background-color: var(--zen-base-secondary) !important;
+}
+
+/* Highcharts plot background and border */
+.highcharts-plot-background {
+  fill: var(--zen-base-secondary) !important;
+}
+.highcharts-plot-border {
+  stroke: var(--zen-border) !important;
+}
+
+/* Highcharts title */
+.highcharts-title,
+.highcharts-subtitle {
+  fill: var(--zen-text) !important;
+  color: var(--zen-text) !important;
+}
+
+/* Legend */
+.highcharts-legend-item text,
+.highcharts-legend-item span {
+  color: var(--zen-text) !important;
+  fill: var(--zen-text) !important;
+}
+
+/* Axis labels and lines */
+.highcharts-axis-labels text { fill: var(--zen-text-dim) !important; }
+.highcharts-axis-line { stroke: var(--zen-border) !important; }
+.highcharts-grid-line { stroke: rgba(45, 212, 191, 0.1) !important; }
+
+/* Tooltip */
+.highcharts-tooltip text { fill: var(--zen-text) !important; }
+.highcharts-tooltip > span { background-color: var(--zen-base-inner) !important; color: var(--zen-text) !important; }
+.highcharts-label-box.highcharts-tooltip-box { fill: var(--zen-base-inner) !important; stroke: var(--zen-accent) !important; }
+
+/* Data labels and connectors on pie */
+.highcharts-data-label text { fill: var(--zen-text) !important; }
+.highcharts-data-label-connector { stroke: var(--zen-text-muted) !important; }
+
+
+/* ==========================================================
+   12. ALERTS
+   ========================================================== */
+
 .alerts-ui { margin-top: 30px; padding: 10px 20px; padding-top: 5px; border: 1px solid rgba(185, 28, 28, 0.3) !important; box-shadow: none !important; background: rgba(185, 28, 28, 0.06) !important; border-radius: var(--zen-radius); }
 .alerts-ui ul li a { color: #ef4444 !important; }
 .alert { margin: 15px 0; border-radius: var(--zen-radius) !important; }
@@ -153,9 +515,19 @@ table, .table { color: var(--zen-text) !important; }
 .alert-warning { background-color: rgba(251, 191, 36, 0.08) !important; border-color: rgba(251, 191, 36, 0.3) !important; color: var(--zen-yellow) !important; }
 .alert-danger { background-color: rgba(185, 28, 28, 0.1) !important; border-color: var(--zen-red) !important; color: #ef4444 !important; }
 
-/* 13. FORMS */
+
+/* ==========================================================
+   13. FORMS
+   ========================================================== */
+
 .btn, .form-control { border-radius: var(--zen-radius) !important; }
-.form-control, input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="tel"], input[type="url"], select, textarea { background-color: var(--zen-base-inner) !important; color: var(--zen-text) !important; border: 1px solid var(--zen-border) !important; padding: 8px 12px !important; transition: border-color 0.2s ease, box-shadow 0.2s ease !important; }
+.form-control, input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="tel"], input[type="url"], select, textarea {
+  background-color: var(--zen-base-inner) !important;
+  color: var(--zen-text) !important;
+  border: 1px solid var(--zen-border) !important;
+  padding: 8px 12px !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
 .form-control:focus, input:focus, select:focus, textarea:focus { border-color: var(--zen-accent) !important; box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.15) !important; outline: none !important; }
 .form-control::placeholder, input::placeholder, textarea::placeholder { color: var(--zen-text-muted) !important; }
 select.form-control option { background-color: var(--zen-base-secondary) !important; color: var(--zen-text) !important; padding: 5px 0; }
@@ -163,34 +535,49 @@ select option[default] { color: var(--zen-text-muted) !important; }
 label, .control-label { color: var(--zen-text) !important; font-weight: 600; }
 form[name="commentForm"] textarea[name="comment"] { min-height: 74px; background-color: var(--zen-base-inner) !important; color: var(--zen-text) !important; border: 1px solid var(--zen-border) !important; }
 
-/* 14. BUTTONS */
-.btn-primary, .btn-success, .btn-group-justified .btn-primary, .btn-group .btn-primary { background-color: var(--zen-accent) !important; border-color: var(--zen-accent) !important; color: #0b1929 !important; font-weight: 600 !important; transition: all 0.2s ease !important; }
-.btn-primary:hover, .btn-success:hover, .btn-primary:focus, .btn-success:focus, .btn-primary:active, .btn-success:active { background-color: var(--zen-accent-hover) !important; border-color: var(--zen-accent-hover) !important; color: #0b1929 !important; box-shadow: 0 4px 12px rgba(45, 212, 191, 0.3) !important; }
-.btn-default { background-color: var(--zen-base-secondary) !important; color: var(--zen-text) !important; border: 1px solid var(--zen-border) !important; font-weight: 500 !important; }
+
+/* ==========================================================
+   14. BUTTONS
+   ========================================================== */
+
+.btn-primary, .btn-success, .btn-group-justified .btn-primary, .btn-group .btn-primary {
+  background-color: var(--zen-accent) !important;
+  border-color: var(--zen-accent) !important;
+  color: #0b1929 !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active,
+.btn-success:hover, .btn-success:focus {
+  background-color: var(--zen-accent-hover) !important;
+  border-color: var(--zen-accent-hover) !important;
+  color: #0b1929 !important;
+  box-shadow: 0 4px 12px rgba(45, 212, 191, 0.3) !important;
+}
+.btn-default {
+  background-color: var(--zen-base-secondary) !important;
+  color: var(--zen-text) !important;
+  border: 1px solid var(--zen-border) !important;
+  font-weight: 500 !important;
+}
 .btn-default:hover, .btn-default:focus { border-color: var(--zen-accent) !important; color: var(--zen-accent) !important; background-color: var(--zen-base-secondary) !important; }
 .btn-group-justified .btn-default { background-color: var(--zen-base-secondary) !important; border: 1px solid var(--zen-border) !important; color: var(--zen-text) !important; }
 .btn-group-justified .btn-default:hover { background-color: rgba(45, 212, 191, 0.1) !important; border-color: var(--zen-accent) !important; }
-.btn-group-justified .btn-default.btn-primary, .btn-group-justified .btn.btn-default.btn-primary { background-color: var(--zen-accent) !important; border-color: var(--zen-accent) !important; color: #0b1929 !important; }
+.btn-group-justified .btn-default.btn-primary,
+.btn-group-justified .btn.btn-default.btn-primary { background-color: var(--zen-accent) !important; border-color: var(--zen-accent) !important; color: #0b1929 !important; }
 .btn-danger { background-color: var(--zen-red) !important; color: var(--zen-text) !important; border: none !important; }
 .btn-danger:hover { background-color: #991b1b !important; }
 .btn-info { background-color: var(--zen-accent2) !important; color: #ffffff !important; border: none !important; }
 .btn-link { color: var(--zen-accent) !important; background: transparent !important; }
 .btn-link:hover { color: var(--zen-accent-hover) !important; }
-.btn-file { background-color: var(--zen-accent) !important; color: #0b1929 !important; }
+.listRowActions .fa-download, .actionIcon { color: var(--zen-accent) !important; cursor: pointer; font-size: 1.1em; }
+.actionIcon:hover { color: var(--zen-accent-hover) !important; }
 
-/* 15. SEARCH */
-.search-container { z-index: 20; }
-.search-box, input.search-box, #search-box { background-color: var(--zen-base-inner) !important; color: var(--zen-text) !important; border: 1px solid var(--zen-border) !important; border-radius: var(--zen-radius) !important; padding: 6px 10px !important; }
-.search-box::placeholder, #search-box::placeholder { color: var(--zen-text-muted) !important; }
-.search-box:focus, #search-box:focus { border-color: var(--zen-accent) !important; box-shadow: 0 0 0 2px rgba(45, 212, 191, 0.15) !important; outline: none !important; }
-.search-icon, .glyphicon-search { color: var(--zen-accent) !important; }
-.search-results-container { position: relative; }
-.search-wrapper { display: inline-block; }
-.fieldcontainer { border: 1px solid var(--zen-border) !important; background-color: var(--zen-base-inner) !important; border-radius: var(--zen-radius); }
-.searchfield { background-color: var(--zen-base-inner) !important; color: var(--zen-text) !important; border: 0 !important; width: 240px; padding: 6px 7px; }
-.searchfield:focus { color: var(--zen-text) !important; outline: none !important; }
 
-/* 16. DROPDOWNS */
+/* ==========================================================
+   15. DROPDOWNS
+   ========================================================== */
+
 .dropdown-menu { background-color: var(--zen-base-secondary) !important; border: 1px solid var(--zen-border) !important; border-radius: var(--zen-radius) !important; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4) !important; }
 .dropdown-menu > li > a { color: var(--zen-text) !important; padding: 8px 16px; }
 .dropdown-menu > li > a:hover { background-color: var(--zen-accent-soft) !important; color: var(--zen-accent) !important; }
@@ -199,7 +586,7 @@ form[name="commentForm"] textarea[name="comment"] { min-height: 74px; background
 .dropdown-content-download a:hover { background-color: var(--zen-accent-soft) !important; color: var(--zen-accent) !important; }
 .categoryDropdown { font-size: 1em; max-height: 400px; overflow-y: auto; padding: 10px; background-color: var(--zen-base-secondary) !important; color: var(--zen-text) !important; }
 
-/* 17. SELECT2 & SELECTRIC */
+/* Select2 */
 .select2-container--default .select2-selection--multiple { background-color: var(--zen-base-secondary) !important; border: 1px solid var(--zen-border) !important; color: var(--zen-text) !important; }
 .select2-container--default .select2-selection--multiple .select2-selection__rendered { color: var(--zen-text) !important; }
 .select2-container--default .select2-selection--multiple .select2-selection__choice { background-color: var(--zen-accent) !important; color: #0b1929 !important; border: none !important; }
@@ -210,6 +597,8 @@ form[name="commentForm"] textarea[name="comment"] { min-height: 74px; background
 .select2-container--default .select2-results__option--highlighted[aria-selected] { background-color: var(--zen-accent) !important; color: #0b1929 !important; }
 .select2-container--default .select2-results__option[aria-selected="true"] { background-color: rgba(45, 212, 191, 0.15) !important; color: var(--zen-accent) !important; }
 .select2-search--dropdown .select2-search__field { background-color: var(--zen-base-inner) !important; color: var(--zen-text) !important; border: 1px solid var(--zen-border) !important; }
+
+/* Selectric */
 .selectric { background-color: var(--zen-base-secondary) !important; border: 1px solid var(--zen-border) !important; border-radius: var(--zen-radius) !important; }
 .selectric .label { color: var(--zen-text) !important; font-weight: 500 !important; margin: 0 !important; padding: 6px 10px !important; }
 .selectric .button { color: var(--zen-text) !important; background-color: transparent !important; }
@@ -219,7 +608,11 @@ form[name="commentForm"] textarea[name="comment"] { min-height: 74px; background
 .selectricItems li:hover, .selectricItems li.selected { background-color: var(--zen-accent) !important; color: #0b1929 !important; }
 .selectricWrapper { float: left; padding-left: 0; min-width: 210px; }
 
-/* 18. MODALS */
+
+/* ==========================================================
+   16. MODALS
+   ========================================================== */
+
 .modal-content { background-color: var(--zen-base-secondary) !important; border: 1px solid var(--zen-border) !important; border-radius: var(--zen-radius) !important; color: var(--zen-text) !important; box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5) !important; }
 .modal-header { border-bottom: 1px solid var(--zen-border) !important; background-color: var(--zen-base-primary) !important; border-radius: var(--zen-radius) var(--zen-radius) 0 0 !important; }
 .modal-header .close { color: var(--zen-text) !important; opacity: 0.7; }
@@ -228,7 +621,11 @@ form[name="commentForm"] textarea[name="comment"] { min-height: 74px; background
 .modal-body { background-color: var(--zen-base-secondary) !important; color: var(--zen-text) !important; }
 .modal-footer { border-top: 1px solid var(--zen-border) !important; background-color: var(--zen-base-primary) !important; border-radius: 0 0 var(--zen-radius) var(--zen-radius) !important; }
 
-/* 19. PAGINATION */
+
+/* ==========================================================
+   17. PAGINATION
+   ========================================================== */
+
 .pagination { margin: 0; margin-top: 5px; }
 .pagination > li > a, .pagination > li > span { background-color: var(--zen-base-secondary) !important; color: var(--zen-text) !important; border: 1px solid var(--zen-border) !important; }
 .pagination > li > a:hover { background-color: var(--zen-accent-soft) !important; color: var(--zen-accent) !important; border-color: var(--zen-accent) !important; }
@@ -236,8 +633,15 @@ form[name="commentForm"] textarea[name="comment"] { min-height: 74px; background
 .pagination > .disabled > a, .pagination > .disabled > span { background-color: var(--zen-base-inner) !important; color: var(--zen-text-muted) !important; border-color: var(--zen-border) !important; }
 .pager li > a, .pager li > span { border-radius: var(--zen-radius) !important; padding: 6px 15px; background-color: var(--zen-base-secondary) !important; color: var(--zen-text) !important; border: 1px solid var(--zen-border) !important; }
 
-/* 20. BADGES */
-.badge, .label, .tag { border-radius: 20px !important; padding: 4px 12px !important; font-weight: 600 !important; font-size: 0.8em !important; }
+
+/* ==========================================================
+   18. BADGES & LABELS
+   ========================================================== */
+
+.badge, .tag { border-radius: 20px !important; padding: 4px 12px !important; font-weight: 600 !important; font-size: 0.8em !important; }
+span.label, .label-success, .label-warning, .label-danger, .label-info, .label-default, .label-primary {
+  border-radius: 20px !important; padding: 4px 12px !important; font-weight: 600 !important; font-size: 0.8em !important;
+}
 .label-success, .badge-success { background-color: rgba(45, 212, 191, 0.15) !important; color: var(--zen-accent) !important; }
 .label-warning, .badge-warning { background-color: rgba(251, 191, 36, 0.15) !important; color: var(--zen-yellow) !important; }
 .label-danger, .badge-danger { background-color: rgba(185, 28, 28, 0.15) !important; color: #ef4444 !important; }
@@ -245,7 +649,11 @@ form[name="commentForm"] textarea[name="comment"] { min-height: 74px; background
 .label-default, .badge-default { background-color: rgba(148, 163, 184, 0.15) !important; color: var(--zen-text-dim) !important; }
 .label-primary, .badge-primary { background-color: rgba(45, 212, 191, 0.15) !important; color: var(--zen-accent) !important; }
 
-/* 21. PANELS */
+
+/* ==========================================================
+   19. PANELS & WELLS
+   ========================================================== */
+
 .well { background-color: var(--zen-base-secondary) !important; border: 1px solid var(--zen-border) !important; box-shadow: none !important; border-radius: var(--zen-radius) !important; color: var(--zen-text) !important; }
 .panel, .panel-default { background-color: var(--zen-base-secondary) !important; border: 1px solid var(--zen-border) !important; box-shadow: none !important; border-radius: var(--zen-radius) !important; }
 .panel-heading { background-color: var(--zen-base-inner) !important; border-bottom: 1px solid var(--zen-border) !important; color: var(--zen-text) !important; border-radius: var(--zen-radius) var(--zen-radius) 0 0 !important; }
@@ -255,18 +663,19 @@ form[name="commentForm"] textarea[name="comment"] { min-height: 74px; background
 .list-group-item { background-color: var(--zen-base-secondary) !important; border: 1px solid var(--zen-border) !important; color: var(--zen-text) !important; }
 .list-group-item:hover { background-color: var(--zen-accent-soft) !important; }
 
-/* 22. HIGHCHARTS */
-.highcharts-background { fill: var(--zen-base-secondary) !important; }
-.highcharts-container { background-color: var(--zen-base-secondary) !important; }
-.highcharts-legend-item span { color: var(--zen-text) !important; fill: var(--zen-text) !important; }
-.highcharts-tooltip text { fill: var(--zen-text) !important; }
-.highcharts-label-box.highcharts-tooltip-box { fill: var(--zen-base-inner) !important; stroke: var(--zen-accent) !important; }
 
-/* 23. FOOTER */
+/* ==========================================================
+   20. FOOTER
+   ========================================================== */
+
 .app-footer { position: absolute; bottom: -30px; width: 100%; }
 .app-footer p { width: 100%; text-align: center; background: var(--zen-base-primary) !important; color: var(--zen-text-muted) !important; margin-bottom: 0; padding: 8px 0; border-top: 1px solid var(--zen-border) !important; font-size: 0.85em; }
 
-/* 24. MISC */
+
+/* ==========================================================
+   21. MISC
+   ========================================================== */
+
 .breadcrumb { background-color: transparent !important; color: var(--zen-text-dim) !important; }
 .breadcrumb > .active { color: var(--zen-text) !important; }
 .breadcrumb > li + li::before { color: var(--zen-text-muted) !important; }
@@ -275,27 +684,41 @@ form[name="commentForm"] textarea[name="comment"] { min-height: 74px; background
 .popover-title { background-color: var(--zen-base-inner) !important; border-bottom: 1px solid var(--zen-border) !important; color: var(--zen-text) !important; }
 .popover-content { color: var(--zen-text) !important; }
 #ngProgress { background-color: var(--zen-accent) !important; color: var(--zen-accent) !important; }
-.listRowActions .fa-download, .actionIcon { color: var(--zen-accent) !important; cursor: pointer; font-size: 1.1em; }
-.actionIcon:hover { color: var(--zen-accent-hover) !important; }
 .correctiveActionIcon { padding: 8px; padding-left: 0px; color: var(--zen-text) !important; }
 .plus-box { width: 100px; height: 100px; border: 1px dashed var(--zen-border) !important; display: flex; justify-content: center; align-items: center; color: var(--zen-text-muted) !important; border-radius: var(--zen-radius); transition: border-color 0.2s ease; }
 .plus-box:hover { border-color: var(--zen-accent) !important; color: var(--zen-accent) !important; }
-.dataTable.no-footer { border-bottom: 1px solid var(--zen-border) !important; }
-.dataTables_wrapper { background-color: transparent !important; }
+.module-title, .panel-title.module-title { color: var(--zen-text) !important; font-size: 1.5em !important; font-weight: 700 !important; padding: 10px 0 !important; }
 .textOverflowEllipsis { color: var(--zen-text) !important; }
 .defTableColumn { max-width: 200px !important; }
+.dataTable.no-footer { border-bottom: 1px solid var(--zen-border) !important; }
+.dataTables_wrapper { background-color: transparent !important; }
 .faqSection { color: var(--zen-text) !important; }
 .rs-sectionbar li, .atch-docs li { margin: 10px 0; font-size: 1.1em; color: var(--zen-text) !important; }
 .atch-docs li a:hover { text-decoration: none !important; color: var(--zen-accent) !important; }
 .qlink { padding: 10px; color: var(--zen-text) !important; }
 
-/* 25. SCROLLBARS */
+
+/* ==========================================================
+   22. SCROLLBARS
+   ========================================================== */
+
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: var(--zen-base-primary); }
 ::-webkit-scrollbar-thumb { background: var(--zen-text-muted); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--zen-accent); }
 
-/* 26. MOBILE */
+
+/* ==========================================================
+   23. TRANSITIONS
+   ========================================================== */
+
+.btn, .form-control, .listViewEntries, .detailRow, a, .nav > li > a { transition: all 0.2s ease !important; }
+
+
+/* ==========================================================
+   24. MOBILE
+   ========================================================== */
+
 @media screen and (max-device-width: 640px) {
   .selectricWrapper { padding-left: 15px; padding: 10px; }
   .pagination-holder { margin-top: 10px !important; }
@@ -305,6 +728,3 @@ form[name="commentForm"] textarea[name="comment"] { min-height: 74px; background
   .navbar-toggle { float: left !important; }
   .navbar-collapse { background-color: var(--zen-base-primary) !important; }
 }
-
-/* 27. TRANSITIONS */
-.btn, .form-control, .listViewEntries, .detailRow, a, .nav > li > a { transition: all 0.2s ease !important; }
