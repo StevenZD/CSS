@@ -1,9 +1,6 @@
 /* ============================================================
-   ZENDATA CYBERSECURITY - Vtiger Customer Portal Theme v4.1
+   ZENDATA CYBERSECURITY - Vtiger Customer Portal Theme v4.2
    2026-04-08
-
-   Deploy: push to GitHub, purge jsDelivr, hard refresh.
-   Version indicator: check footer shows "Theme v4.1"
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap');
@@ -29,10 +26,10 @@
 
 
 /* ==========================================================
-   VERSION INDICATOR - check footer shows "Theme v4.1"
+   VERSION INDICATOR
    ========================================================== */
 .app-footer p::after {
-  content: " | Theme v4.1" !important;
+  content: " | Theme v4.2" !important;
   color: var(--zen-accent) !important;
 }
 
@@ -47,10 +44,7 @@ body, html {
   color: var(--zen-text) !important;
 }
 
-/* ============================================================
-   ICON FONT FIX - target element AND ::before pseudo-element
-   Bootstrap 3 renders glyphs via content on ::before
-   ============================================================ */
+/* Icon font protection - target element AND ::before pseudo */
 .glyphicon,
 .glyphicon::before,
 [class^="glyphicon-"],
@@ -72,7 +66,6 @@ body, html {
   font-family: 'FontAwesome' !important;
 }
 
-/* Explicitly target the search icon by exact class combo */
 span.glyphicon.glyphicon-search,
 span.glyphicon.glyphicon-search::before {
   font-family: 'Glyphicons Halflings' !important;
@@ -181,12 +174,7 @@ tr.listViewHeaders th {
 .listViewHeaderValues { color: var(--zen-accent) !important; text-decoration: none !important; }
 .listViewLastActionHeader { background-color: var(--zen-base-inner) !important; }
 
-/* ============================================================
-   ROW FIX - NUCLEAR OVERRIDE
-   Target every possible td in every possible context
-   ============================================================ */
-
-/* Base: every td and th in any table */
+/* Nuclear row override - force dark on every td */
 table td,
 table th,
 .table td,
@@ -199,45 +187,34 @@ tbody tr th {
   color: var(--zen-text) !important;
 }
 
-/* Header cells stay darker */
-thead td,
-thead th,
-.listViewHeaders td,
-.listViewHeaders th,
-tr.listViewHeaders td,
-tr.listViewHeaders th {
+/* Headers stay darker */
+thead td, thead th,
+.listViewHeaders td, .listViewHeaders th,
+tr.listViewHeaders td, tr.listViewHeaders th {
   background-color: var(--zen-base-inner) !important;
   color: var(--zen-accent) !important;
 }
 
 /* Search row stays darker */
-.searchRow td,
-tr.searchRow td {
+.searchRow td, tr.searchRow td {
   background-color: var(--zen-base-inner) !important;
   color: var(--zen-text) !important;
   border-bottom: 1px solid var(--zen-border) !important;
 }
 
-/* First cell in each row */
-.listTableFirstCell,
-td.listTableFirstCell {
-  background-color: var(--zen-base-secondary) !important;
-}
-.searchRow .listTableFirstCell,
-.searchRow td.listTableFirstCell {
-  background-color: var(--zen-base-inner) !important;
-}
+/* First cell */
+.listTableFirstCell, td.listTableFirstCell { background-color: var(--zen-base-secondary) !important; }
+.searchRow .listTableFirstCell, .searchRow td.listTableFirstCell { background-color: var(--zen-base-inner) !important; }
 
 /* Data rows */
-.listViewEntries td,
-tr.listViewEntries td,
+.listViewEntries td, tr.listViewEntries td,
 .table > tbody > tr.listViewEntries > td {
   background-color: var(--zen-base-secondary) !important;
   color: var(--zen-text) !important;
   border-bottom: 1px solid var(--zen-border) !important;
 }
 
-/* Bootstrap contextual rows - the likely cause of white rows */
+/* Bootstrap contextual rows */
 .table > tbody > tr.info > td,
 .table > tbody > tr.info > th,
 .table > tbody > tr.active > td,
@@ -249,19 +226,14 @@ tr.listViewEntries td,
 tr.info td, tr.info th,
 tr.active td, tr.active th,
 tr.success td, tr.success th,
-tr.warning td,
-tr.danger td {
+tr.warning td, tr.danger td {
   background-color: var(--zen-base-secondary) !important;
   color: var(--zen-text) !important;
 }
 
-/* Vtiger-specific highlight classes */
-.highlighted td,
-.selectedListEntry td,
-.selected td,
-tr.highlighted td,
-tr.selectedListEntry td,
-tr.selected td,
+/* Vtiger highlight classes */
+.highlighted td, .selectedListEntry td, .selected td,
+tr.highlighted td, tr.selectedListEntry td, tr.selected td,
 tr.listViewEntries.highlighted td,
 tr.listViewEntries.selectedListEntry td,
 tr.listViewEntries.selected td,
@@ -270,29 +242,22 @@ tr.listViewEntries.active td {
   color: var(--zen-text) !important;
 }
 
-/* INLINE STYLE OVERRIDE - override any row with style attribute */
-tr[style] td,
-tr[style] > td,
-tr[style*="background"] td,
-tr[style*="background"] > td,
-td[style*="background"],
-tr.listViewEntries[style] td {
+/* Override inline styles on rows */
+tr[style] td, tr[style] > td,
+tr[style*="background"] td, tr[style*="background"] > td,
+td[style*="background"], tr.listViewEntries[style] td {
   background-color: var(--zen-base-secondary) !important;
   color: var(--zen-text) !important;
 }
 
-/* Span and links inside td must also be white */
-tbody td span,
-tbody td a,
-tbody td div,
-.listViewEntries td span,
-.listViewEntries td a,
-.textOverflowEllipsis,
-td .ng-binding {
+/* Text inside cells */
+tbody td span, tbody td a, tbody td div,
+.listViewEntries td span, .listViewEntries td a,
+.textOverflowEllipsis, td .ng-binding {
   color: var(--zen-text) !important;
 }
 
-/* Hover states */
+/* Hover */
 .listViewEntries:hover td,
 .table-hover > tbody > tr:hover > td,
 .table-hover > tbody > tr:hover > th,
@@ -301,23 +266,20 @@ td .ng-binding {
   color: var(--zen-text) !important;
 }
 
-/* Striped rows */
+/* Striped */
 .table-striped > tbody > tr:nth-of-type(odd) > td { background-color: var(--zen-base-inner) !important; }
 .table-striped > tbody > tr:nth-of-type(even) > td { background-color: var(--zen-base-secondary) !important; }
 
-/* Actions column */
+/* Misc table */
 .listViewActionsColumn { background-color: var(--zen-base-secondary) !important; }
 .panel-transparent, .panel-table-body { background-color: transparent !important; }
 .table-responsive { overflow-x: auto; border: 1px solid var(--zen-border) !important; border-radius: var(--zen-radius); }
-
-/* Search elements */
 .searchRow .searchElement input,
 .searchRow .searchElement .form-control {
   background-color: var(--zen-base-secondary) !important;
   color: var(--zen-text) !important;
   border: 1px solid var(--zen-border) !important;
 }
-
 .listViewEntries { cursor: pointer; height: 48px; transition: background 0.15s ease; }
 
 
@@ -363,21 +325,35 @@ td .ng-binding {
 .leftEditContent.nosplit { border-right: none !important; }
 
 /* ============================================================
-   TEXT OVERFLOW FIX - NUCLEAR
-   .rightEditContent has NO bootstrap column class.
-   It wraps a col-lg-7 child. Must be explicitly constrained.
-   URLs like https://u33329348.ct.sendgrid.net/wf/open?upn=...
-   are single unbreakable tokens - need word-break: break-all
+   HIDE EMPTY DETAIL ROWS
+   Uses :has() to detect when the value span inside a row is
+   empty, and hides the entire row. Works for Incident Category,
+   Incident Sub-category, Recommendations, etc. when not filled.
    ============================================================ */
 
+/* Method 1: span.value is truly empty (no text, no children) */
+.detailRow:has(> div > span.value.detail-break:empty) {
+  display: none !important;
+}
+
+/* Method 2: broader - any .value that is empty inside a detailRow */
+.row.detailRow:has(.value:empty) {
+  display: none !important;
+}
+
+/* Method 3: also hide if ng-hide class is on the row (Angular) */
+.detailRow.ng-hide {
+  display: none !important;
+}
+
+
+/* Right panel overflow fix */
 .rightEditContent {
-  min-height: 450px;
-  padding-top: 20px;
+  min-height: 450px; padding-top: 20px;
   background: var(--zen-base-primary) !important;
   border-left: 1px solid var(--zen-border) !important;
   overflow: hidden !important;
-  word-wrap: break-word !important;
-  overflow-wrap: break-word !important;
+  word-wrap: break-word !important; overflow-wrap: break-word !important;
   word-break: break-all !important;
   max-width: 100% !important;
   width: 58.33333333% !important;
@@ -389,14 +365,11 @@ td .ng-binding {
 .rightEditContent .tab-pane {
   background: var(--zen-base-primary) !important;
   overflow: hidden !important;
-  word-wrap: break-word !important;
-  overflow-wrap: break-word !important;
+  word-wrap: break-word !important; overflow-wrap: break-word !important;
   word-break: break-all !important;
-  max-width: 100% !important;
-  box-sizing: border-box !important;
+  max-width: 100% !important; box-sizing: border-box !important;
 }
 
-/* Force ALL children inside right panel to respect boundaries */
 .rightEditContent *,
 .rightEditContent .tab-content *,
 .rightEditContent .tab-pane * {
@@ -404,49 +377,32 @@ td .ng-binding {
   box-sizing: border-box !important;
 }
 
-/* Target the exact span that overflows (from DOM) */
 .rightEditContent span.value.detail-break,
 .rightEditContent .value.detail-break {
-  word-wrap: break-word !important;
-  word-break: break-all !important;
-  overflow-wrap: break-word !important;
-  white-space: pre-wrap !important;
-  overflow: hidden !important;
-  max-width: 100% !important;
-  display: block !important;
+  word-wrap: break-word !important; word-break: break-all !important;
+  overflow-wrap: break-word !important; white-space: pre-wrap !important;
+  overflow: hidden !important; max-width: 100% !important; display: block !important;
 }
 
-/* Override inline style="white-space: pre-line" on spans */
 .rightEditContent span[style*="white-space"],
 .rightEditContent span[style*="pre-line"] {
-  white-space: pre-wrap !important;
-  word-break: break-all !important;
-  overflow: hidden !important;
-  max-width: 100% !important;
-  display: block !important;
+  white-space: pre-wrap !important; word-break: break-all !important;
+  overflow: hidden !important; max-width: 100% !important; display: block !important;
 }
 
-/* Links inside (long URLs) must break */
-.rightEditContent a,
-.value.detail-break a {
-  word-break: break-all !important;
-  overflow-wrap: break-word !important;
+.rightEditContent a, .value.detail-break a {
+  word-break: break-all !important; overflow-wrap: break-word !important;
 }
 
-/* Tables inside right panel */
 .rightEditContent table {
-  table-layout: fixed !important;
-  width: 100% !important;
-  max-width: 100% !important;
+  table-layout: fixed !important; width: 100% !important; max-width: 100% !important;
 }
 
-.rightEditContent img,
-.rightEditContent iframe {
-  max-width: 100% !important;
-  height: auto !important;
+.rightEditContent img, .rightEditContent iframe {
+  max-width: 100% !important; height: auto !important;
 }
 
-/* Tab navigation */
+/* Tabs */
 .nav-tabs { border-bottom: 1px solid var(--zen-border) !important; }
 .nav-tabs > li > a { color: var(--zen-text-dim) !important; background: transparent !important; border: none !important; }
 .nav-tabs > li.active > a,
@@ -489,101 +445,44 @@ td .ng-binding {
 .shortcut-button .btn { width: 100% !important; margin-bottom: 8px !important; text-align: left !important; }
 
 
-/* ============================================================
-   CHART FIX - NUCLEAR
-   Highcharts renders: <rect fill="#ffffff" class="highcharts-background">
-   This is an SVG attribute. CSS fill property overrides SVG attributes.
-   Also target by attribute selector as double insurance.
-   Also the legend uses inline style="color: rgb(51, 51, 51)"
-   ============================================================ */
+/* ==========================================================
+   10. HIGHCHARTS
+   ========================================================== */
 
-/* Method 1: Class selector (standard) */
-.highcharts-background {
+.highcharts-background { fill: var(--zen-base-secondary) !important; }
+rect[fill="#ffffff"], rect[fill="white"], rect[fill="#FFFFFF"],
+rect[fill="rgb(255, 255, 255)"], rect[fill="rgb(255,255,255)"] {
   fill: var(--zen-base-secondary) !important;
 }
-
-/* Method 2: Attribute selector - target any rect with white fill */
-rect[fill="#ffffff"],
-rect[fill="white"],
-rect[fill="#FFFFFF"],
-rect[fill="rgb(255, 255, 255)"],
-rect[fill="rgb(255,255,255)"] {
-  fill: var(--zen-base-secondary) !important;
-}
-
-/* Method 3: First rect child of Highcharts SVG */
-.highcharts-root > rect,
-.highcharts-root > rect:first-child,
-svg.highcharts-root > rect {
-  fill: var(--zen-base-secondary) !important;
-}
-
-/* Method 4: Container backgrounds */
-.highcharts-container {
+.highcharts-root > rect, .highcharts-root > rect:first-child,
+svg.highcharts-root > rect { fill: var(--zen-base-secondary) !important; }
+.highcharts-container { background-color: var(--zen-base-secondary) !important; }
+[data-highcharts-chart] { background-color: var(--zen-base-secondary) !important; }
+div[id^="highcharts-"], div[id*="highcharts"] { background-color: var(--zen-base-secondary) !important; }
+.charts-container, .charts-container > div, .charts-container > div > div,
+.charts-container .panel, .charts-container .panel-default,
+.charts-container .panel-body, .charts-container .ng-isolate-scope {
   background-color: var(--zen-base-secondary) !important;
 }
-
-[data-highcharts-chart] {
-  background-color: var(--zen-base-secondary) !important;
-}
-
-div[id^="highcharts-"],
-div[id*="highcharts"] {
-  background-color: var(--zen-base-secondary) !important;
-}
-
-/* Method 5: All parent wrappers */
-.charts-container,
-.charts-container > div,
-.charts-container > div > div,
-.charts-container .panel,
-.charts-container .panel-default,
-.charts-container .panel-body,
-.charts-container .ng-isolate-scope {
-  background-color: var(--zen-base-secondary) !important;
-}
-
-/* Plot area */
 .highcharts-plot-background { fill: var(--zen-base-secondary) !important; }
 .highcharts-plot-border { stroke: var(--zen-border) !important; }
-
-/* Title text */
 .highcharts-title, .highcharts-subtitle { fill: var(--zen-text) !important; color: var(--zen-text) !important; }
-
-/* Legend text - has inline style="color: rgb(51, 51, 51)" */
 .highcharts-legend-item text { fill: var(--zen-text) !important; }
-.highcharts-legend-item span {
-  color: var(--zen-text) !important;
-  fill: var(--zen-text) !important;
-}
-/* Override the inline style on legend spans */
-.highcharts-legend div span,
-.highcharts-legend div div span,
-div.highcharts-legend span,
-div.highcharts-legend div span {
-  color: var(--zen-text) !important;
-}
-
-/* Axis */
+.highcharts-legend-item span { color: var(--zen-text) !important; fill: var(--zen-text) !important; }
+div.highcharts-legend span, div.highcharts-legend div span { color: var(--zen-text) !important; }
 .highcharts-axis-labels text { fill: var(--zen-text-dim) !important; }
 .highcharts-axis-line { stroke: var(--zen-border) !important; }
 .highcharts-grid-line { stroke: rgba(45, 212, 191, 0.1) !important; }
-
-/* Tooltip */
 .highcharts-tooltip text { fill: var(--zen-text) !important; }
 .highcharts-tooltip > span { background-color: var(--zen-base-inner) !important; color: var(--zen-text) !important; }
 .highcharts-label-box.highcharts-tooltip-box { fill: var(--zen-base-inner) !important; stroke: var(--zen-accent) !important; }
-
-/* Data labels */
 .highcharts-data-label text { fill: var(--zen-text) !important; }
 .highcharts-data-label-connector { stroke: var(--zen-text-muted) !important; }
-
-/* No-data message */
 .highcharts-no-data text { fill: var(--zen-text-muted) !important; }
 
 
 /* ==========================================================
-   10. ALERTS
+   11. ALERTS
    ========================================================== */
 
 .alerts-ui { margin-top: 30px; padding: 10px 20px; border: 1px solid rgba(185, 28, 28, 0.3) !important; box-shadow: none !important; background: rgba(185, 28, 28, 0.06) !important; border-radius: var(--zen-radius); }
@@ -595,7 +494,7 @@ div.highcharts-legend div span {
 
 
 /* ==========================================================
-   11. FORMS
+   12. FORMS
    ========================================================== */
 
 .btn, .form-control { border-radius: var(--zen-radius) !important; }
@@ -611,7 +510,7 @@ form[name="commentForm"] textarea[name="comment"] { min-height: 74px; background
 
 
 /* ==========================================================
-   12. BUTTONS
+   13. BUTTONS
    ========================================================== */
 
 .btn-primary, .btn-success, .btn-group-justified .btn-primary, .btn-group .btn-primary {
@@ -636,7 +535,7 @@ form[name="commentForm"] textarea[name="comment"] { min-height: 74px; background
 
 
 /* ==========================================================
-   13. DROPDOWNS
+   14. DROPDOWNS
    ========================================================== */
 
 .dropdown-menu { background-color: var(--zen-base-secondary) !important; border: 1px solid var(--zen-border) !important; border-radius: var(--zen-radius) !important; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4) !important; }
@@ -664,7 +563,7 @@ form[name="commentForm"] textarea[name="comment"] { min-height: 74px; background
 
 
 /* ==========================================================
-   14. MODALS
+   15. MODALS
    ========================================================== */
 
 .modal-content { background-color: var(--zen-base-secondary) !important; border: 1px solid var(--zen-border) !important; border-radius: var(--zen-radius) !important; color: var(--zen-text) !important; box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5) !important; }
@@ -676,7 +575,7 @@ form[name="commentForm"] textarea[name="comment"] { min-height: 74px; background
 
 
 /* ==========================================================
-   15. PAGINATION
+   16. PAGINATION
    ========================================================== */
 
 .pagination { margin: 0; margin-top: 5px; }
@@ -687,7 +586,7 @@ form[name="commentForm"] textarea[name="comment"] { min-height: 74px; background
 
 
 /* ==========================================================
-   16. BADGES & LABELS
+   17. BADGES & LABELS
    ========================================================== */
 
 .badge, .tag { border-radius: 20px !important; padding: 4px 12px !important; font-weight: 600 !important; font-size: 0.8em !important; }
@@ -701,7 +600,7 @@ span.label { border-radius: 20px !important; padding: 4px 12px !important; font-
 
 
 /* ==========================================================
-   17. PANELS & WELLS
+   18. PANELS & WELLS
    ========================================================== */
 
 .well { background-color: var(--zen-base-secondary) !important; border: 1px solid var(--zen-border) !important; box-shadow: none !important; border-radius: var(--zen-radius) !important; }
@@ -714,7 +613,7 @@ span.label { border-radius: 20px !important; padding: 4px 12px !important; font-
 
 
 /* ==========================================================
-   18. FOOTER
+   19. FOOTER
    ========================================================== */
 
 .app-footer { position: absolute; bottom: -30px; width: 100%; }
@@ -722,7 +621,7 @@ span.label { border-radius: 20px !important; padding: 4px 12px !important; font-
 
 
 /* ==========================================================
-   19. MISC
+   20. MISC
    ========================================================== */
 
 .breadcrumb { background-color: transparent !important; }
@@ -739,7 +638,7 @@ span.label { border-radius: 20px !important; padding: 4px 12px !important; font-
 
 
 /* ==========================================================
-   20. SCROLLBARS
+   21. SCROLLBARS
    ========================================================== */
 
 ::-webkit-scrollbar { width: 6px; height: 6px; }
@@ -749,14 +648,14 @@ span.label { border-radius: 20px !important; padding: 4px 12px !important; font-
 
 
 /* ==========================================================
-   21. TRANSITIONS
+   22. TRANSITIONS
    ========================================================== */
 
 .btn, .form-control, .listViewEntries, .detailRow, a, .nav > li > a { transition: all 0.2s ease !important; }
 
 
 /* ==========================================================
-   22. MOBILE
+   23. MOBILE
    ========================================================== */
 
 @media screen and (max-device-width: 640px) {
